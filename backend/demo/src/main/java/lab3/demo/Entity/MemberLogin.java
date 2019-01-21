@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 @ToString
 @EqualsAndHashCode
 
-public class Member {
+public class MemberLogin {
     @Id @GeneratedValue
     private Long id;
 

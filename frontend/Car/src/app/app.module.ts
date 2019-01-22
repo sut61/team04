@@ -11,11 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatRadioModule} from '@angular/material/radio';
 import { MemberComponent } from './member/member.component';
 import { CallcarComponent } from './callcar/callcar.component';
+import { DriverComponent } from './driver/driver.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
   { path: 'member', component: MemberComponent },
   { path: 'callcar', component: CallcarComponent },
+  { path: 'driver', component: DriverComponent },
 ];
 
 @NgModule({
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     AppComponent,
     CommentComponent,
     MemberComponent,
-    CallcarComponent
+    CallcarComponent,
+    DriverComponent
   ],
   imports: [
     BrowserModule,

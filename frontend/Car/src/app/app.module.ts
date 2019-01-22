@@ -10,17 +10,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatRadioModule} from '@angular/material/radio';
 import { MemberComponent } from './member/member.component';
+import { CallcarComponent } from './callcar/callcar.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
   { path: 'member', component: MemberComponent },
+  { path: 'callcar', component: CallcarComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     CommentComponent,
-    MemberComponent
+    MemberComponent,
+    CallcarComponent
   ],
   imports: [
     BrowserModule,

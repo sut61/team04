@@ -1,22 +1,59 @@
-<mat-toolbar>My App</mat-toolbar>
-<mat-radio-group >
-  <mat-radio-button (click)="setDriver('true')" value='true'>Option 1</mat-radio-button>
-  <mat-radio-button (click)="setDriver('false')" value='false'>Option 2</mat-radio-button>
-</mat-radio-group>
-<br>
-<br>
-<mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Comment" [(ngModel)]='comment' [ngModelOptions]="{standalone: true}"></textarea>
-</mat-form-field>
-<br>
-<mat-form-field>
-  <mat-select >
-    <mat-option *ngFor="let user of Drivers" [value]="user.firstName"
-    (click)="saveDriver(user.id)">
-      {{user.firstName}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
+<!--
+  <p>
+  callcar works!
+</p>
+-->
+<mat-card>
 
-<button (click)="testSave()">summit!!</button>
+  <mat-toolbar color="primary">
+      Call Car App
+  </mat-toolbar>
+  <h2>
+    <div align="center">
+      Where do you want to go?
+    </div>
+  </h2>
+  <h4>
+    <div align="center">
+      <mat-form-field>
+        <input matInput placeholder="Destination">
+      </mat-form-field>
+    </div>
+    <div align="center">
+      <mat-form-field>
+        <input matInput placeholder="Current Location">
+      </mat-form-field>
+    </div>
+    <div align="center">
+      <mat-form-field>
+        <mat-select placeholder="Car Type">
+          <mat-option>
+            Taxi
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div align="center">
+      <mat-form-field>
+        <mat-select placeholder="Driver">
+          <mat-option>
+            Sompong
+          </mat-option>
+          <mat-option>
+            Somchai
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </h4>
+  <br>
+  <mat-divider></mat-divider>
+  <h4>
+  <br><br>
+    <div align="center" style="min-height: 300px">
+      <button mat-raised-button color="primary">Confirm</button>
+      <button mat-raised-button color="primary">Cancel</button>
+    </div>   
+  </h4>
+</mat-card>
+

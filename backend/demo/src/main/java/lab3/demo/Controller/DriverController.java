@@ -67,7 +67,7 @@ public class DriverController {
 
         Driver driver = new Driver();
         driver.setGender(gender.get());
-        driver.setProVince(province.get());
+        driver.setProvince(province.get());
         driver.setCarType(carType.get());
         driver.setName(name);
         driver.setTel(tel);

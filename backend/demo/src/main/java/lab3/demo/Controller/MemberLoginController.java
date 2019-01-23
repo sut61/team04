@@ -30,7 +30,7 @@ public class MemberLoginController {
         return memberLoginRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping(path = "LoginMember/{id_Member}")
+    @PostMapping(path = "LoginMember1/{id_member}")
     public MemberLogin MemberLogin(@PathVariable Long id_member){
         Optional<Member> member = memberRepository.findById(id_member);
         
@@ -41,7 +41,7 @@ public class MemberLoginController {
 
     }
 
-    @DeleteMapping(path = "LoginMember/{id_Member}")
+    @DeleteMapping(path = "LoginMember/{id_member}")
     public String Customer(@PathVariable Long id_Member){
         memberLoginRepository.deleteById(id_Member);
         return "complete";

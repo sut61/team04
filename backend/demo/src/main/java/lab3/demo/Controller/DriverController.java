@@ -55,7 +55,7 @@ public class DriverController {
             @PathVariable Long id_province,
             @PathVariable Long id_cartype,
             @PathVariable String name,
-            @PathVariable Long tel,
+            @PathVariable String tel,
             @PathVariable String address,
             @PathVariable String email){
 

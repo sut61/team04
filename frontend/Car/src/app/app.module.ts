@@ -12,12 +12,16 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MemberComponent } from './member/member.component';
 import { CallcarComponent } from './callcar/callcar.component';
 import { DriverComponent } from './driver/driver.component';
+import { LoginMemberComponent } from './login-member/login-member.component';
+import { MenuComponent } from './menu/menu.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
   { path: 'member', component: MemberComponent },
   { path: 'callcar', component: CallcarComponent },
   { path: 'driver', component: DriverComponent },
+  { path: 'login', component: LoginMemberComponent },
+  { path: 'menu', component: MenuComponent },
 ];
 
 @NgModule({
@@ -26,7 +30,9 @@ const appRoutes: Routes = [
     CommentComponent,
     MemberComponent,
     CallcarComponent,
-    DriverComponent
+    DriverComponent,
+    LoginMemberComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

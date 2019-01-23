@@ -24,7 +24,7 @@ public class Driver {
     private CarType carType;
 
     private @NonNull String name;
-    private @NonNull Long tel;
+    private @NonNull String tel;
     private @NonNull String address;
     private @NonNull String email;
 

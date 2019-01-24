@@ -16,19 +16,19 @@
   <h4>
     <div align="center">
       <mat-form-field>
-        <input matInput placeholder="Destination">
+        <input matInput placeholder="Destination" [(ngModel)]='Dest' [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </div>
     <div align="center">
       <mat-form-field>
-        <input matInput placeholder="Current Location">
+        <input matInput placeholder="Current Location" [(ngModel)]='Cur' [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </div>
     <div align="center">
       <mat-form-field>
         <mat-select placeholder="Car Type">
-          <mat-option>
-            Taxi
+          <mat-option (click)="savecartype(user.id)" *ngFor="let user of CarType" [(value)]="user.name">
+            {{user.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -36,11 +36,8 @@
     <div align="center">
       <mat-form-field>
         <mat-select placeholder="Driver">
-          <mat-option>
-            Sompong
-          </mat-option>
-          <mat-option>
-            Somchai
+          <mat-option (click)="savedriver(user.id)" *ngFor="let user of Driver" [(value)]="user.name">
+            {{user.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -51,7 +48,7 @@
   <h4>
   <br><br>
     <div align="center" style="min-height: 300px">
-      <button mat-raised-button color="primary">Confirm</button>
+      <button mat-raised-button color="primary" (click)="save()">Confirm</button>
       <button mat-raised-button color="primary">Cancel</button>
     </div>   
   </h4>

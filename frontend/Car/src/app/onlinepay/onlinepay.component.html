@@ -1,0 +1,37 @@
+<mat-card class="card1">
+  <br>
+  <h4 style="text-align:center"><b>ชำระเงินออนไลน์</b></h4>
+  <form class="example-form" style="text-align:center">
+
+    
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="member NAME" [(ngModel)]='member' [ngModelOptions]="{standalone: true}">
+    </mat-form-field><br>
+   
+    <mat-form-field>
+      <mat-select  placeholder="เลือกชื่อพนักงานขับรถ"  >
+        <mat-option (click)="save_level(user)" *ngFor="let user of employee" [(value)]="user.driver">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    {{level2}}<br>
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="กรอกระยะทาง (Km.)" [(ngModel)]='distance' [ngModelOptions]="{standalone: true}">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="จำนวนเงิน" [(ngModel)]='money' [ngModelOptions]="{standalone: true}">
+    </mat-form-field><br>
+
+   
+      <!-- <input type="submit" (click)="save()"  value="Save">&nbsp; -->
+ 
+
+    <input type="button" onclick="window.location='transection'" (click)="save()" value="PAY NOW">
+
+  </form>
+
+</mat-card>

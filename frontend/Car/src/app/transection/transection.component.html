@@ -1,0 +1,33 @@
+<mat-card class="card1">
+  <br>
+  <h4 style="text-align:center"><b>ธุรกรรมการเงิน</b></h4>
+  <form class="example-form" style="text-align:center">
+
+   
+    <mat-form-field>
+      <mat-select  placeholder="เลือกธนาคาร"  >
+        <mat-option (click)="save_level(user)" *ngFor="let user of employee" [(value)]="user.bank">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    {{level2}}<br>
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="จำนวนเงินที่ต้องจ่าย" [(ngModel)]='money' [ngModelOptions]="{standalone: true}">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="กรอกจำนวนเงิน" [(ngModel)]='moneypay' [ngModelOptions]="{standalone: true}">
+    </mat-form-field><br>
+
+   
+      
+    <input type="button" onclick="window.location='onlinepay'"  value="Back">&nbsp;
+
+    <input type="button" onclick="window.location='slip'" (click)="save()" value="CONFIRM">
+
+  </form>
+
+</mat-card>

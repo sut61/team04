@@ -42,8 +42,9 @@ public class OnlinePayController {
         return memberrepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping(path = "OnlinePay/{distance}/{id_member}/{id_driver}/{id_bank}")
+    @PostMapping(path = "OnlinePay/{distance}/{moneypay}/{id_member}/{id_driver}/{id_bank}")
     public OnlinePay OnlinePay(@PathVariable int distance,
+                          @PathVariable int moneypay,
                          @PathVariable Long id_member,
                          @PathVariable Long id_driver,
                          @PathVariable Long id_bank){
@@ -53,7 +54,7 @@ public class OnlinePayController {
 
         OnlinePay onlinepay = new OnlinePay();
         onlinepay.setDistance(distance);
-        
+        onlinepay.setMoneypay(moneypay);
         onlinepay.setMember(member.get());
         onlinepay.setDriver(driver.get());
         onlinepay.setBank(bank.get());

@@ -49,7 +49,7 @@ export class ComplainComponent implements OnInit {
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")
-        this.router.navigate(['/complaindescr']); 
+        this.router.navigate(['/complaindescription']); 
        }
      );
     }else if(this.type == "false"){
@@ -59,7 +59,7 @@ export class ComplainComponent implements OnInit {
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")
-        this.router.navigate(['/complaindescr']); 
+        this.router.navigate(['/complaindescription']); 
        }
      );
     }

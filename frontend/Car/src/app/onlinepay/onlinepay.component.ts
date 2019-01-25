@@ -6,34 +6,47 @@ import { OnlinepayService } from '../shared/onlinepay/onlinepay.service';
 @Component({
   selector: 'app-onlinepay',
   templateUrl: './onlinepay.component.html',
-  styleUrls: ['./onlinepay.component.css']
+  styleUrls: ['./onlinepay.component.css'],
+  // template :`<button class="btn" (click)="setShow()">Test NgIF</button>
+  // <div *ngIf="isShow">This is use ngIf</div>`,
 })
 export class OnlinepayComponent implements OnInit {
 
-  Member: Array<any>
+  Member: any
   Distance: Array<any>
   Driver: Array<any>
   Money: Array<any>
 
+  Bank : Array<any>
   member_id : any
+  bank_id : any
   driver_id : any
-  distance : any
+  distance : Number
   money : any
-  
+  moneypay : Number
+  onlinepay : any
+
+  isShow:boolean = false;
+
+      setShow(){
+        if(this.isShow == true){
+          this.isShow = false; 
+        }else{
+          this.isShow = true;
+        }
+        this.moneypay= this.distance
+      }
+      
 
   constructor(private httpClient: HttpClient, private router: Router, private onlinepayService: OnlinepayService) { }
 
   ngOnInit() {
 
-    this.onlinepayService.getMember().subscribe(data => {
-      this.Member = data;
+    this.onlinepayService.getLoginMember().subscribe(data => {
+      this.Member = data[0];
       console.log(this.Member);
     });
 
-    this.onlinepayService.getDistance().subscribe(data => {
-      this.Distance = data;
-      console.log(this.Distance);
-    });
 
     this.onlinepayService.getDriver().subscribe(data => {
       this.Driver = data;
@@ -45,6 +58,22 @@ export class OnlinepayComponent implements OnInit {
       console.log(this.Money);
     });
 
+    this.onlinepayService.getBank().subscribe(data => {
+      this.Bank = data;
+      console.log(this.Bank);
+    });
+  }
+
+  save(){
+    console.log("in save");
+    console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.Member.id+'is member');console.log(this.driver_id.id+'is iD');console.log(this.bank_id.id+'Ba ID');
+
+    this.httpClient.post('http://localhost:8080/OnlinePay/'+this.distance+'/'+this.moneypay+'/'+this.Member.member.id+'/'+this.driver_id+'/'+this.bank_id,this.onlinepay)
+    .subscribe(
+      data => {
+        alert("บันทึกสำเร็จ")
+       }
+     );
   }
 
   savemember(member_id){
@@ -65,6 +94,15 @@ export class OnlinepayComponent implements OnInit {
   savemoney(money){
     console.log(money);
     this.money = money;
+  }
+
+  save_bank(bank_id){
+    console.log(bank_id);
+    this.bank_id = bank_id;
+  }
+  save_level(bank_id){
+    console.log(bank_id);
+    this.bank_id = bank_id;
   }
 
 }

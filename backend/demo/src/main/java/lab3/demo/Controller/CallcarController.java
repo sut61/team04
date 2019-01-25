@@ -1,18 +1,16 @@
 package lab3.demo.Controller;
-
 import lab3.demo.Entity.*;
-
 import lab3.demo.Repository.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 @RestController
+@RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public class CallcarController {
     @Autowired private CarTypeRepository carTypeRepository;

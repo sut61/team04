@@ -14,6 +14,7 @@ import { CallcarComponent } from './callcar/callcar.component';
 import { CallcarsumComponent } from './callcarsum/callcarsum.component';
 import { OnlinepayComponent } from './onlinepay/onlinepay.component';
 import { TransectionComponent } from './transection/transection.component';
+import { DriverComponent } from './driver/driver.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'onlinepay', component: OnlinepayComponent },
   { path: 'transection', component: TransectionComponent },
   { path: 'callcarsum', component: CallcarsumComponent },
+  { path: 'driver', component: DriverComponent },
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     CallcarComponent,
     CallcarsumComponent,
     OnlinepayComponent,
-    TransectionComponent
+    TransectionComponent,
+    DriverComponent
   ],
   imports: [
     BrowserModule,

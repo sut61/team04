@@ -21,7 +21,7 @@ public class ComplainController {
     @Autowired private MemberRepository memberRepository;
 
     public ComplainController(
-        DriverTaxiRepository driverTaxiRepository,
+            DriverTaxiRepository driverTaxiRepository,
             DriverRepository driverRepository,
             ComplainRepository complainRepository,
             MemberRepository memberRepository){
@@ -41,23 +41,36 @@ public class ComplainController {
         return complainRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/Complain/{message}/{id_drivertaxi}/{id_driver}/{id_member}")
-    public Complain Complain(
+    @PostMapping("/Complain1/{message}/{id_driver}/{id_member}")
+    public Complain complain(
             @PathVariable String message,
-            @PathVariable Long id_drivertaxi,
             @PathVariable Long id_driver,
             @PathVariable Long id_member){
 
-
-
-        Optional<DriverTaxi> driverTaxi = driverTaxiRepository.findById(id_drivertaxi);
         Optional<Driver> driver = driverRepository.findById(id_driver);
         Optional<Member> member = memberRepository.findById(id_member);
 
         Complain complain = new Complain();
         complain.setMessage(message);
-        complain.setDriverTaxi(driverTaxi.get());
         complain.setDriver(driver.get());
+        complain.setMember(member.get());
+
+
+        return complainRepository.save(complain);
+    }
+
+    @PostMapping("/Complain2/{message}/{id_drivertaxi}/{id_member}")
+    public Complain complain2(
+            @PathVariable String message,
+            @PathVariable Long id_drivertaxi,
+            @PathVariable Long id_member){
+
+        Optional<DriverTaxi> driverTaxi = driverTaxiRepository.findById(id_drivertaxi);
+        Optional<Member> member = memberRepository.findById(id_member);
+
+        Complain complain = new Complain();
+        complain.setMessage(message);
+        complain.setDriverTaxi(driverTaxi.get());
         complain.setMember(member.get());
 
 

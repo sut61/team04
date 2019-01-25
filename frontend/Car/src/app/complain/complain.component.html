@@ -1,0 +1,27 @@
+<mat-toolbar>ส่งคำร้องเรียน</mat-toolbar>
+<mat-card>
+<div align="center">
+  เลือกประเภทรถ
+<mat-radio-group >
+  <mat-radio-button (click)="setDriver('true')" value='true'>Driver </mat-radio-button>&nbsp;
+  <mat-radio-button (click)="setDriver('false')" value='false'> DriverTaxi</mat-radio-button>
+</mat-radio-group>
+<br>
+<br>
+<mat-form-field class="example-full-width">
+    <textarea matInput placeholder="ข้อความร้องเรียน" [(ngModel)]='comment' [ngModelOptions]="{standalone: true}"></textarea>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-select >
+    <mat-option *ngFor="let user of Drivers" [value]="user.name"
+    (click)="saveDriver(user.id)">
+      {{user.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+
+<button (click)="testSave()">summit!!</button>
+</div>
+</mat-card>

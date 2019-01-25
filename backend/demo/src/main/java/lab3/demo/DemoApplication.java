@@ -17,6 +17,7 @@ public class DemoApplication {
 	}
 	@Bean
 	ApplicationRunner init(CarTypeRepository repository,
+	BankRepository bankrepository,
 							GenderRepository genderRepository,
 							ProvinceRepository provinceRepository,
 							DriverTaxiRepository driverTaxiRepository) {
@@ -56,7 +57,15 @@ public class DemoApplication {
 				provinceRepository.save(province);
 			});
 			provinceRepository.findAll().forEach(System.out::println);
+
+			Stream.of("กษิกรนะ", "ไทยพานิชนะ", "กรุงทองนะ").forEach(name -> {
+				Bank bank = new Bank();
+				bank.setName(name);
+				bankrepository.save(bank);
+			});
+			provinceRepository.findAll().forEach(System.out::println);
 		};
+		
 	}
 }
 

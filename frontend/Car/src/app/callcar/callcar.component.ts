@@ -11,7 +11,7 @@ import { CallcarService } from '../shared/Callcar/callcar.service';
 export class CallcarComponent implements OnInit {
 
   
-  LoginMember: Array<any>
+  LoginMember: any
   CarType: Array<any>
   Driver: Array<any>
 
@@ -26,7 +26,7 @@ export class CallcarComponent implements OnInit {
 
   ngOnInit() {
     this.callcarService.getLoginMember().subscribe(data => {
-      this.LoginMember = data;
+      this.LoginMember = data[0];
       console.log(this.LoginMember);
     });
 
@@ -53,15 +53,14 @@ export class CallcarComponent implements OnInit {
 
   save(){
     console.log("saved");
-    this.httpClient.post('http://localhost:8080/Callcar/'+this.Dest+'/'+this.Cur+'/'+
-    this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember,this.callcar)
+    this.httpClient.post('http://localhost:8080/Callcar/'+this.Dest+'/'+this.Cur+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember.member.id,this.callcar)
     .subscribe(
       data => {
         alert("Saved")
        }
      );
      this.router.navigate(['/callcarsum']);
-     console.log(this.Dest+this.Cur+this.cartype_id+this.driver_id+this.LoginMember);
+     console.log(this.Dest+'/'+this.Cur+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember);
   }
 
 }

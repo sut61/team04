@@ -10,8 +10,8 @@ export class OnlinepayService {
   public API = '//localhost:8080';
   constructor(private http: HttpClient) { }
 
-  getMember(): Observable<any> {
-    return this.http.get(this.API + '/Member/');
+  getLoginMember(): Observable<any> {
+    return this.http.get(this.API + '/loginmember/');
   }
   getDistance(): Observable<any> {
     return this.http.get(this.API + '/Distance/');
@@ -23,4 +23,7 @@ export class OnlinepayService {
     return this.http.get(this.API + '/Money/');
   }
 
+  getBank(): Observable<any> {
+    return this.http.get(this.API + '/Bank/');
+  }
 }

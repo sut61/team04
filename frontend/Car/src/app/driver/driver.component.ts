@@ -58,7 +58,7 @@ export class DriverComponent implements OnInit {
 
   save(){
     console.log("insave");
-    this.httpClient.post('http://localhost:8080/Driver/'+this.cartype_id1+'/'+this.gender_id1+'/'+this.province_id1+'/'+this.name+'/'+this.tel+'/'+this.address+'/'+this.email,this.driver)
+    this.httpClient.post('http://localhost:8080/Driver/'+this.gender_id1+'/'+this.province_id1+'/'+this.cartype_id1+'/'+this.name+'/'+this.tel+'/'+this.address+'/'+this.email,this.driver)
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")

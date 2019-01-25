@@ -1,4 +1,6 @@
 <mat-toolbar>สมัครคนขับ</mat-toolbar>
+<mat-card>
+  <div align="center">
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <input matInput placeholder="ชื่อ-นามสกุล" [(ngModel)]='name' [ngModelOptions]="{standalone: true}">
@@ -40,7 +42,9 @@
     </mat-select>
   </mat-form-field>
 </form>
-<button (click)="save()">บันทึก</button>
-<button onclick="window.location='login'">ยกเลิก</button>
+<button mat-raised-button color="primary" (click)="save()">บันทึก</button>
+<button mat-raised-button color="primary" onclick="window.location='login'">ยกเลิก</button>
+</div>
+</mat-card>
 
 

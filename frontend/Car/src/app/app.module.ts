@@ -18,6 +18,8 @@ import { DriverComponent } from './driver/driver.component';
 import { ComplainComponent } from './Complain/complain.component';
 import { LoginMemberComponent } from './login-member/login-member.component';
 import { MenuComponent } from './menu/menu.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { ComplainDescriptionComponent } from './complain-description/complain-description.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'driver', component: DriverComponent },
   { path: 'login-member', component: LoginMemberComponent },
   { path: 'menu', component: MenuComponent },
+  { path: 'complaindescription', component: ComplainDescriptionComponent },
   { path: '', redirectTo: 'login-member', pathMatch: 'full' }
 ];
 
@@ -45,7 +48,8 @@ const appRoutes: Routes = [
     DriverComponent,
     ComplainComponent,
     LoginMemberComponent,
-    MenuComponent
+    MenuComponent,
+    ComplainDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatSelectModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

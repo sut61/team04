@@ -18,7 +18,8 @@ public class DemoApplication {
 	@Bean
 	ApplicationRunner init(CarTypeRepository repository,
 							GenderRepository genderRepository,
-							ProvinceRepository provinceRepository) {
+							ProvinceRepository provinceRepository,
+							DriverTaxiRepository driverTaxiRepository) {
 		return args -> {
 			Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
 					"AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
@@ -34,6 +35,19 @@ public class DemoApplication {
 				genderRepository.save(gender);
 			});
 			genderRepository.findAll().forEach(System.out::println);
+
+
+			
+				DriverTaxi driverTaxi = new DriverTaxi();
+				driverTaxi.setName("name1");
+				driverTaxi.setTel("0866666666");
+				driverTaxi.setAddress("Address1");
+				driverTaxi.setEmail("Email1");
+				driverTaxiRepository.save(driverTaxi);
+			
+
+			driverTaxiRepository.findAll().forEach(System.out::println);
+
 
 			Stream.of("จังหวัดเชียงใหม่", "จังหวัดเชียงราย", "จังหวัดลำปาง", "จังหวัดลำพูน", "จังหวัดแม่ฮ่องสอน",
 					"จังหวัดน่าน", "จังหวัดพะเยา", "จังหวัดแพร่", "จังหวัดอุตรดิตถ์").forEach(name -> {

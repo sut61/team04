@@ -1,11 +1,21 @@
+<mat-card>
+    <mat-toolbar color="primary">
+        Log In Now
+    </mat-toolbar>
 <form class="example-form">
+    <div align="center">
   <mat-form-field class="example-full-width">
     <textarea matInput placeholder="Username" [(ngModel)]='username' [ngModelOptions]="{standalone: true}"></textarea>
   </mat-form-field>
-
+  </div>
+  <div align="center">
   <mat-form-field class="example-full-width">
     <textarea matInput placeholder="Password" [(ngModel)]='password' [ngModelOptions]="{standalone: true}"></textarea>
   </mat-form-field>
+  </div>
 </form>
 <br>
-<button mat-button (click)="save()">Click me!</button>
+<div align="center" style="min-height: 600px">
+<button mat-raised-button color="primary" (click)="save()">Log In</button>
+</div>
+</mat-card>

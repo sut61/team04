@@ -7,8 +7,7 @@ import { OnlinepayService } from '../shared/onlinepay/onlinepay.service';
   selector: 'app-onlinepay',
   templateUrl: './onlinepay.component.html',
   styleUrls: ['./onlinepay.component.css'],
-  // template :`<button class="btn" (click)="setShow()">Test NgIF</button>
-  // <div *ngIf="isShow">This is use ngIf</div>`,
+  
 })
 export class OnlinepayComponent implements OnInit {
 
@@ -16,8 +15,8 @@ export class OnlinepayComponent implements OnInit {
   Distance: Array<any>
   Driver: Array<any>
   Money: Array<any>
-
   Bank : Array<any>
+
   member_id : any
   bank_id : any
   driver_id : any
@@ -27,6 +26,7 @@ export class OnlinepayComponent implements OnInit {
   onlinepay : any
 
   isShow:boolean = false;
+  isShow2:boolean = false;
 
       setShow(){
         if(this.isShow == true){
@@ -35,6 +35,14 @@ export class OnlinepayComponent implements OnInit {
           this.isShow = true;
         }
         this.moneypay= this.distance
+      }
+
+      setShow2(){
+        if(this.isShow2 == true){
+          this.isShow2 = false; 
+        }else{
+          this.isShow2 = true;
+        }
       }
       
 
@@ -98,11 +106,11 @@ export class OnlinepayComponent implements OnInit {
 
   save_bank(bank_id){
     console.log(bank_id);
-    this.bank_id = bank_id;
+    this.bank_id = bank_id; 
   }
-  save_level(bank_id){
-    console.log(bank_id);
-    this.bank_id = bank_id;
-  }
+  // save_level(bank_id){
+  //   console.log(bank_id);
+  //   this.bank_id = bank_id;
+  // }
 
 }

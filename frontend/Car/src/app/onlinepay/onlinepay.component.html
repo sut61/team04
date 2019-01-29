@@ -49,24 +49,21 @@
             {{distance*3}}<br>
         
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="กรอกจำนวนเงิน" [(ngModel)]='moneypay' [ngModelOptions]="{standalone: true}">
-            </mat-form-field><br>
-        
-           
+              <input matInput placeholder="กรอกจำนวนเงิน" [(ngModel)]='moneypay' [ngModelOptions]="{standalone: false}">
+            </mat-form-field><br>          
               
             <input type="button" onclick="window.location='onlinepay'"  value="Back">&nbsp;
         
-            <input type="button"  (click)="save()" value="CONFIRM">
-        
+            <input type="button" value="CONFIRM" (click)="save()" (click)="setShow2()"><br><br>
+              <div *ngIf="isShow2">
+            <input type="button" onclick="window.location='transection'"  value="ดูใบเสร็จ">
+              </div>
           </form>
-        
-        
+
         </div>
+
+        
+        <!-- สิ้นสุดส่วนหน้าจ่ายเงิน -->
+
       </mat-card><br>
-      <!-- สิ้นสุดส่วนหน้าจ่ายเงิน -->
-
-    <!-- <input type="button" onclick="window.location='transection'" (click)="save()" value="PAY NOW"> -->
-
- 
-
-<!-- </mat-card> -->
+      

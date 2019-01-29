@@ -37,9 +37,15 @@ public class OnlinePayController {
     public Collection<Bank> bank(){
         return bankrepository.findAll().stream().collect(Collectors.toList());
     }
+
     @GetMapping("/Member")
     public Collection<Member> member(){
         return memberrepository.findAll().stream().collect(Collectors.toList());
+    }
+
+    @GetMapping("/onlinepay")
+    public Collection<OnlinePay> onlinepay(){
+        return onlinepayrepository.findAll().stream().collect(Collectors.toList());
     }
 
     @PostMapping(path = "OnlinePay/{distance}/{moneypay}/{id_member}/{id_driver}/{id_bank}")

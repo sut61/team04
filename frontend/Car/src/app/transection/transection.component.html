@@ -1,33 +1,31 @@
-<mat-card class="card1">
-  <br>
-  <h4 style="text-align:center"><b>ธุรกรรมการเงิน</b></h4>
-  <form class="example-form" style="text-align:center">
+    <mat-card>
+      <H1 style="text-align:center;">TAXI Online Payment Bill</H1><br>
+      <br><br><br>
 
-   
-    <mat-form-field>
-      <mat-select  placeholder="เลือกธนาคาร"  >
-        <mat-option (click)="save_level(user)" *ngFor="let user of employee" [(value)]="user.bank">
-          {{user.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field><br>
-    {{level2}}<br>
+      <mat-card style="text-align:center;" *ngFor="let user of OnlinePay">
+       <div >
+        <h3  *ngIf="OnlinePay[num-1].id == user.id">
+            บิล ID: {{user.id}}&nbsp;&nbsp;&nbsp;<br>
+        ชื่อลูกค้า: {{user.member.name}}&nbsp;&nbsp;&nbsp;<br>
+        ชื่อพนักงาน {{user.driver.name}}&nbsp;&nbsp;&nbsp;<br>
+        ระยะทาง {{user.distance}}&nbsp;&nbsp;&nbsp;<br>
+        ชื่อธนาคาร {{user.bank.name}}&nbsp;&nbsp;&nbsp;<br>
+        ราคา {{user.moneypay}}&nbsp;&nbsp;&nbsp;<br>
+        หมายเลขรถ {{user.driver.carType.name}}&nbsp;&nbsp;&nbsp;<br>
+        </h3></div>
+        </mat-card>
 
+        
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="จำนวนเงินที่ต้องจ่าย" [(ngModel)]='money' [ngModelOptions]="{standalone: true}">
-    </mat-form-field><br>
-
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="กรอกจำนวนเงิน" [(ngModel)]='moneypay' [ngModelOptions]="{standalone: true}">
-    </mat-form-field><br>
-
-   
+        <H3 style="text-align:center;">ขอบคุณ<br>&nbsp;&nbsp;Thank You</H3>
+        
+       
+      <h5 style="text-align:center;">
+          <input type="button" value="Print" onClick="window.print()"><br><br>
+        </h5>
       
-    <input type="button" onclick="window.location='onlinepay'"  value="Back">&nbsp;
-
-    <input type="button" onclick="window.location='slip'" (click)="save()" value="CONFIRM">
-
-  </form>
-
-</mat-card>
+   
+    <br><br>
+    <h3 align="center"> <input type="button" [routerLink]="['/onlinepay']"
+       routerLinkActive="onlinepay" value="ย้อนกลับ" ></h3>
+      </mat-card>

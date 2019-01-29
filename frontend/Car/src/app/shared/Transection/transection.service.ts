@@ -10,20 +10,9 @@ export class TransectionService {
   public API = '//localhost:8080';
   constructor(private http: HttpClient) { }
 
-  getBank(): Observable<any> {
-    return this.http.get(this.API + '/Bank/');
-  }
-
-  getMoney(): Observable<any> {
-    return this.http.get(this.API + '/Money/');
-  }
-
-  getMoneypay(): Observable<any> {
-    return this.http.get(this.API + '/Moneypay/');
-  }
-
-  getMember(): Observable<any> {
-    return this.http.get(this.API + '/Member/');
+  
+  getOnlinePay(): Observable<any> {
+    return this.http.get(this.API + '/onlinepay/');
   }
   
 }

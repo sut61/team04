@@ -18,7 +18,7 @@ public class OnlinePay {
     private Long id;
 
     int distance;
-
+    int moneypay;
 
 @ManyToOne
 private Driver driver;

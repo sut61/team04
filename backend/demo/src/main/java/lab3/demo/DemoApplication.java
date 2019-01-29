@@ -63,7 +63,7 @@ public class DemoApplication {
 				bank.setName(name);
 				bankrepository.save(bank);
 			});
-			provinceRepository.findAll().forEach(System.out::println);
+			bankrepository.findAll().forEach(System.out::println);
 		};
 		
 	}

@@ -34,7 +34,7 @@ public class CommentController {
     }
 
     @GetMapping("Score")
-    public Collection<Score> score(){
+    public Collection<Score> scores(){
         return scoreRepository.findAll().stream().collect(Collectors.toList());
     }
 

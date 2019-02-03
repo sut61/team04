@@ -13,6 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Score {
+
     @Id
     @GeneratedValue
     private Long id;

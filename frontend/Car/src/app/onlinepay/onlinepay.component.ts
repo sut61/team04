@@ -25,6 +25,8 @@ export class OnlinepayComponent implements OnInit {
   moneypay : Number
   onlinepay : any
 
+  
+
   isShow:boolean = false;
   isShow2:boolean = false;
 
@@ -34,7 +36,7 @@ export class OnlinepayComponent implements OnInit {
         }else{
           this.isShow = true;
         }
-        this.moneypay= this.distance
+     
       }
 
       setShow2(){

@@ -12,6 +12,9 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.web.bind.annotation.*;
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CommentController {
 
     @Autowired private DriverTaxiRepository driverTaxiRepository;
@@ -19,22 +22,25 @@ public class CommentController {
     @Autowired private CommentRepository commentRepository;
     @Autowired private MemberRepository memberRepository;
     @Autowired private ScoreRepository scoreRepository;
+    @Autowired private TamRepository tamRepository;
 
     public CommentController(
             DriverTaxiRepository driverTaxiRepository,
             DriverRepository driverRepository,
             CommentRepository commentRepository,
             MemberRepository memberRepository,
-            ScoreRepository scoreRepository){
+            ScoreRepository scoreRepository,
+            TamRepository tamRepository){
         this.driverTaxiRepository = driverTaxiRepository;
         this.driverRepository = driverRepository;
         this.commentRepository = commentRepository;
         this.memberRepository = memberRepository;
         this.scoreRepository = scoreRepository;
+        this.tamRepository = tamRepository;
     }
 
     @GetMapping("Score")
-    public Collection<Score> scores(){
+    public Collection<Score> score(){
         return scoreRepository.findAll().stream().collect(Collectors.toList());
     }
 

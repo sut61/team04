@@ -22,21 +22,26 @@ public class CommentController {
     @Autowired private CommentRepository commentRepository;
     @Autowired private MemberRepository memberRepository;
     @Autowired private ScoreRepository scoreRepository;
-    @Autowired private TamRepository tamRepository;
+
 
     public CommentController(
             DriverTaxiRepository driverTaxiRepository,
             DriverRepository driverRepository,
             CommentRepository commentRepository,
             MemberRepository memberRepository,
-            ScoreRepository scoreRepository,
-            TamRepository tamRepository){
+            ScoreRepository scoreRepository
+            ){
         this.driverTaxiRepository = driverTaxiRepository;
         this.driverRepository = driverRepository;
         this.commentRepository = commentRepository;
         this.memberRepository = memberRepository;
         this.scoreRepository = scoreRepository;
-        this.tamRepository = tamRepository;
+
+    }
+
+    @GetMapping("Comment")
+    public Collection<Comment> comment(){
+        return commentRepository.findAll().stream().collect(Collectors.toList());
     }
 
     @GetMapping("Score")

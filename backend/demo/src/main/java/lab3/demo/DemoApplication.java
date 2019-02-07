@@ -17,10 +17,12 @@ public class DemoApplication {
 	}
 	@Bean
 	ApplicationRunner init(CarTypeRepository repository,
-	BankRepository bankrepository,
+							BankRepository bankrepository,
 							GenderRepository genderRepository,
 							ProvinceRepository provinceRepository,
-							DriverTaxiRepository driverTaxiRepository) {
+							DriverTaxiRepository driverTaxiRepository,
+						    CauseRepository causeRepository,
+						   	PriceTypeRepository priceTypeRepository) {
 		return args -> {
 			Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
 					"AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
@@ -64,6 +66,22 @@ public class DemoApplication {
 				bankrepository.save(bank);
 			});
 			bankrepository.findAll().forEach(System.out::println);
+
+			Stream.of("รถยางรั่ว", "เกิดอุบัติเหตุ", "น้ำมันหมด", "ไม่ทราบสาเหตุ", "อื่นๆ"
+					).forEach(name -> {
+				PriceType priceType = new PriceType();
+				priceType.setPriceType(name);
+				priceTypeRepository.save(priceType);
+			});
+			priceTypeRepository.findAll().forEach(System.out::println);
+
+			Stream.of("ราคา 200 บาท รถจักรยานยนต์", "ราคา 500 บาท รถ ECO-Car", "ราคา 700 บาท รถ Compact Car", "ราคา 1000 บาท รถ Mid-Size Car", "ราคา 1500 บาท รถ Full-Size Car"
+			).forEach(causetype -> {
+				Cause cause = new Cause();
+				cause.setCauseType(causetype);
+				causeRepository.save(cause);
+			});
+			causeRepository.findAll().forEach(System.out::println);
 		};
 		
 	}

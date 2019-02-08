@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { CommentComponent } from './comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule,MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatInputModule,  MatDatepickerModule,MatNativeDateModule, MatListModule, MatToolbarModule,MatSelectModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatRadioModule} from '@angular/material/radio';
@@ -20,6 +20,8 @@ import { LoginMemberComponent } from './login-member/login-member.component';
 import { MenuComponent } from './menu/menu.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ComplainDescriptionComponent } from './complain-description/complain-description.component';
+import { DiscountComponent } from './discount/discount.component';
+
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'callcarsum', component: CallcarsumComponent },
   { path: 'complain', component: ComplainComponent },
   { path: 'driver', component: DriverComponent },
+  { path: 'discount', component: DiscountComponent },
   { path: 'login-member', component: LoginMemberComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'complaindescription', component: ComplainDescriptionComponent },
@@ -49,6 +52,7 @@ const appRoutes: Routes = [
     ComplainComponent,
     LoginMemberComponent,
     MenuComponent,
+    DiscountComponent,
     ComplainDescriptionComponent
   ],
   imports: [
@@ -59,6 +63,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatListModule,
     MatToolbarModule,
     MatSelectModule,

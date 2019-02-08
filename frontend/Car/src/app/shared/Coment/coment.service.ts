@@ -18,4 +18,13 @@ export class ComentService {
     console.log("in get Driver");
     return this.http.get(this.API + '/DriverTaxi/');
   }
+  getScore(): Observable<any> {
+    return this.http.get(this.API + '/Score/');
+  }
+
+  getLoginMember(): Observable<any> {
+    return this.http.get(this.API + '/loginmember/');
+  }
+
+
 }

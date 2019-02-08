@@ -21,6 +21,8 @@ public class DemoApplication {
 							GenderRepository genderRepository,
 							ProvinceRepository provinceRepository,
 							DriverTaxiRepository driverTaxiRepository,
+							TimeRangeRepository timeRangeRepository,
+							AdminRepository adminRepository,
 						    CauseRepository causeRepository,
 						   	PriceTypeRepository priceTypeRepository) {
 		return args -> {
@@ -82,6 +84,43 @@ public class DemoApplication {
 				causeRepository.save(cause);
 			});
 			causeRepository.findAll().forEach(System.out::println);
+
+			
+			TimeRange t = new TimeRange();
+			t.setTimeRange("08.00-12.00");
+			t.setStart("08.00");
+			t.setFinish("12.00");
+			timeRangeRepository.save(t);
+
+			TimeRange t1 = new TimeRange();
+			t1.setTimeRange("12.00-16.00");
+			t1.setStart("12.00");
+			t1.setFinish("16.00");
+			timeRangeRepository.save(t1);
+
+			TimeRange t2 = new TimeRange();
+			t2.setTimeRange("16.00-20.00");
+			t2.setStart("16.00");
+			t2.setFinish("20.00");
+			timeRangeRepository.save(t2);
+
+			TimeRange t3 = new TimeRange();
+			t3.setTimeRange("20.00-24.00");
+			t3.setStart("20.00");
+			t3.setFinish("24.00");
+			timeRangeRepository.save(t3);
+		
+
+		timeRangeRepository.findAll().forEach(System.out::println);
+
+		Admin a = new Admin();
+			a.setUsername("pop");
+			a.setPassword("123");
+			a.setName("POP");
+			adminRepository.save(a);
+		
+
+		adminRepository.findAll().forEach(System.out::println);
 		};
 		
 	}

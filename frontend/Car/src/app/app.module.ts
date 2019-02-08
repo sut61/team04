@@ -20,11 +20,8 @@ import { LoginMemberComponent } from './login-member/login-member.component';
 import { MenuComponent } from './menu/menu.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ComplainDescriptionComponent } from './complain-description/complain-description.component';
-<<<<<<< HEAD
 import { EmergencyComponent } from './emergency/emergency.component';
-=======
 import { DiscountComponent } from './discount/discount.component';
->>>>>>> 81d3384a3e8ac66a4ae559d6271bfa9ab499e526
 
 
 const appRoutes: Routes = [
@@ -57,14 +54,11 @@ const appRoutes: Routes = [
     ComplainComponent,
     LoginMemberComponent,
     MenuComponent,
-<<<<<<< HEAD
     ComplainDescriptionComponent,
     EmergencyComponent,
 
-=======
     DiscountComponent,
     ComplainDescriptionComponent
->>>>>>> 81d3384a3e8ac66a4ae559d6271bfa9ab499e526
   ],
   imports: [
     BrowserModule,

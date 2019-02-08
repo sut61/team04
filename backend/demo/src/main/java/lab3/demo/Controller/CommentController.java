@@ -49,11 +49,15 @@ public class CommentController {
         return scoreRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping(path = "Comment1/{comment}/{id_score}/{id_driver}/{id_member}")
-    public Comment commnet(@PathVariable String comment,
-                           @PathVariable Long id_score,
-                           @PathVariable Long id_driver,
-                           @PathVariable Long id_member){
+    @PostMapping(path = "Comment1/{comment}/{nameDriver}/{nameMamber}/{phoneDriver}/{phoneMamber}/{id_score}/{id_driver}/{id_member}")
+    public Comment commnet( @PathVariable String comment,
+                            @PathVariable String nameDriver,
+                            @PathVariable String nameMamber,
+                            @PathVariable String phoneDriver,
+                            @PathVariable String phoneMamber,
+                            @PathVariable Long id_score,
+                            @PathVariable Long id_driver,
+                            @PathVariable Long id_member){
         Optional<Driver> driver = driverRepository.findById(id_driver);
         Optional<Score> score = scoreRepository.findById(id_score);
         Optional<Member> member = memberRepository.findById(id_member);
@@ -61,6 +65,10 @@ public class CommentController {
 
         Comment commnet2 = new Comment();
         commnet2.setComment(comment);
+        commnet2.setNameDriver(nameDriver);
+        commnet2.setNameMamber(nameMamber);
+        commnet2.setPhoneDriver(phoneDriver);
+        commnet2.setPhoneMamber(phoneMamber);
         commnet2.setDriver(driver.get());
         commnet2.setScore(score.get());
         commnet2.setMember(member.get());
@@ -69,8 +77,12 @@ public class CommentController {
 
     }
 
-    @PostMapping(path = "Comment2/{comment}/{id_score}/{id_driver}/{id_member}")
+    @PostMapping(path = "Comment2/{comment}/{nameDriver}/{nameMamber}/{phoneDriver}/{phoneMamber}/{id_score}/{id_driver}/{id_member}")
     public Comment commnet2(@PathVariable String comment,
+                            @PathVariable String nameDriver,
+                            @PathVariable String nameMamber,
+                            @PathVariable String phoneDriver,
+                            @PathVariable String phoneMamber,
                             @PathVariable Long id_score,
                             @PathVariable Long id_driver,
                             @PathVariable Long id_member){
@@ -80,6 +92,10 @@ public class CommentController {
 
         Comment commnet2 = new Comment();
         commnet2.setComment(comment);
+        commnet2.setNameDriver(nameDriver);
+        commnet2.setNameMamber(nameMamber);
+        commnet2.setPhoneDriver(phoneDriver);
+        commnet2.setPhoneMamber(phoneMamber);
         commnet2.setDriverTaxi(driverTaxi.get());
         commnet2.setScore(score.get());
         commnet2.setMember(member.get());

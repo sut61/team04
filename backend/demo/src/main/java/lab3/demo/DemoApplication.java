@@ -24,7 +24,8 @@ public class DemoApplication {
 							TimeRangeRepository timeRangeRepository,
 							AdminRepository adminRepository,
 						    CauseRepository causeRepository,
-						   	PriceTypeRepository priceTypeRepository) {
+							   PriceTypeRepository priceTypeRepository,
+							   ScoreRepository scoreRepository) {
 		return args -> {
 			Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
 					"AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
@@ -59,6 +60,14 @@ public class DemoApplication {
 				Province province = new Province();
 				province.setName(name);
 				provinceRepository.save(province);
+			});
+			provinceRepository.findAll().forEach(System.out::println);
+
+			Stream.of(1, 2, 3, 4, 5
+					).forEach(name -> {
+				Score province = new Score();
+				province.setPoint(name);
+				scoreRepository.save(province);
 			});
 			provinceRepository.findAll().forEach(System.out::println);
 
@@ -122,6 +131,8 @@ public class DemoApplication {
 
 		adminRepository.findAll().forEach(System.out::println);
 		};
+
+		
 		
 	}
 }

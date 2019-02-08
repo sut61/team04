@@ -22,13 +22,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { ComplainDescriptionComponent } from './complain-description/complain-description.component';
 import { EmergencyComponent } from './emergency/emergency.component';
 import { DiscountComponent } from './discount/discount.component';
-
+import { CashpayComponent } from './cashpay/cashpay.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
   { path: 'member', component: MemberComponent },
   { path: 'callcar', component: CallcarComponent },
   { path: 'onlinepay', component: OnlinepayComponent },
+  { path: 'cashpay',component: CashpayComponent},
   { path: 'transection', component: TransectionComponent },
   { path: 'callcarsum', component: CallcarsumComponent },
   { path: 'complain', component: ComplainComponent },
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
     MenuComponent,
     ComplainDescriptionComponent,
     EmergencyComponent,
+    CashpayComponent,
 
     DiscountComponent,
     ComplainDescriptionComponent

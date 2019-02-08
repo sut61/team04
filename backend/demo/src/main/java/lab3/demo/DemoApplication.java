@@ -20,6 +20,7 @@ public class DemoApplication {
 							BankRepository bankrepository,
 							GenderRepository genderRepository,
 							ProvinceRepository provinceRepository,
+							CareerRepository careerRepository,
 							DriverTaxiRepository driverTaxiRepository,
 							TimeRangeRepository timeRangeRepository,
 							AdminRepository adminRepository,
@@ -62,6 +63,13 @@ public class DemoApplication {
 				provinceRepository.save(province);
 			});
 			provinceRepository.findAll().forEach(System.out::println);
+
+			Stream.of("รับจ้าง", "ข้าราชการ", "นักศึกษา", "ว่างงาน").forEach(name -> {
+				Career career = new Career();
+				career.setName(name);
+				careerRepository.save(career);
+			});
+			careerRepository.findAll().forEach(System.out::println);
 
 			Stream.of(1, 2, 3, 4, 5
 					).forEach(name -> {

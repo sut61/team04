@@ -1,0 +1,51 @@
+<mat-toolbar>เรียกรถฉุกเฉิน</mat-toolbar>
+<mat-card>
+  <div align="center">
+<form class="example-form">
+  <mat-form-field>
+   <mat-select  placeholder="ชื่อพนักงาน"  >
+    <mat-option (click)="savedriver(user.id)" *ngFor="let user of Driver" [(value)]="user.driver">
+      {{user.driver}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select  placeholder="ชื่อลูกค้า"  >
+      <mat-option (click)="savemember(user.id)" *ngFor="let user of Member" [(value)]="user.member">
+        {{user.member}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select  placeholder="สาเหตุที่เสีย"  >
+      <mat-option (click)="savecause(user.id)" *ngFor="let user of Cause" [(value)]="user.cause">
+        {{user.cause}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select  placeholder="ประเภทรถที่จะเรียก"  >
+      <mat-option (click)="savepriceType(user.id)" *ngFor="let user of PriceType" [(value)]="user.priceType">
+        {{user.priceType}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="ตำแหน่งที่รถเสีย" [(ngModel)]='position' [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="เบอร์โทรศัพท์" [(ngModel)]='phone' [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <br>
+</form>
+<button mat-raised-button color="primary" (click)="save()">บันทึก</button>
+<button mat-raised-button color="primary" onclick="window.location='login'">ยกเลิก</button>
+</div>
+</mat-card>
+
+

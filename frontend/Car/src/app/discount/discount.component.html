@@ -1,0 +1,61 @@
+<mat-card >
+  <mat-toolbar >ลดราคา</mat-toolbar>
+
+
+  <div align="center">
+
+
+    <mat-form-field>
+      <mat-select  placeholder="ชื่อพนักงาน"  >
+        <mat-option (click)="saveadmin(user.id)" *ngFor="let user of Admin" [(value)]="user.name">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div align="center">
+    <mat-form-field>
+      <mat-select  placeholder="เลื่อกประเภทรถ"  >
+        <mat-option (click)="savecartype(user.id)" *ngFor="let user of CarType" [(value)]="user.name">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div align="center">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="โปรโมชั่น" [(ngModel)]='promotion' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  </div>
+  
+   <div align="center">
+    <mat-form-field >
+      <input matInput [matDatepicker]="picker" placeholder="วันที่" [(ngModel)]="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+  <div align="center">
+    <mat-form-field>
+      <mat-select  placeholder="ช่วงเวลา" >
+        <mat-option (click)="savetimeRange(user.id)" *ngFor="let user of TimeRange" [(value)]="user.timeRange">
+          {{user.timeRange}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div align="center">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ราคา" [(ngModel)]='price' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  </div>
+
+
+  <div align="center" style="min-height: 300px">
+    <button (click)="save()">บันทึก</button>
+    <button onclick="window.location='login'">ยกเลิก</button>
+  </div>
+
+</mat-card>

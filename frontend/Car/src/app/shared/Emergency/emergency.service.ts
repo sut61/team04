@@ -11,15 +11,15 @@ export class EmergencyService {
   constructor(private http: HttpClient) {  }
 
   getDriver(): Observable<any> {
-    return this.http.get(this.API + '/Driver/');
+    return this.http.get(this.API + '/driver/');
   }
   getMember(): Observable<any> {
-    return this.http.get(this.API + '/Member/');
+    return this.http.get(this.API + '/member/');
   }
   getCause(): Observable<any> {
-    return this.http.get(this.API + '/Cause/');
+    return this.http.get(this.API + '/cause/');
   }
   getPriceType(): Observable<any> {
-    return this.http.get(this.API + '/PriceType/');
+    return this.http.get(this.API + '/priceType/');
   }
 }

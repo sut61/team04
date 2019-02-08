@@ -1,0 +1,73 @@
+
+<mat-card class="card" align='center'>
+  <br>
+  <h2 style="text-align:center" color="primary"><b>ชำระเงินค่าโดยสาร</b></h2>
+  <br>
+    
+    ชื่อผู้ขับขี่รถ : {{Driver.name}}
+    <br><br>
+    
+    รถที่ใช้ในการเดินทาง : {{Driver.carType.name}}
+  
+    <br><br>
+  
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="กรอกระยะทาง (Km.)" [(ngModel)]='dis' [(ngModel)]='distance' [ngModelOptions]="{standalone: true}">
+    </mat-form-field><br>
+    <br>
+
+    คำนวณค่าโดยสาร
+        
+    {{dis*3}}<br>
+
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="กรอกจำนวนเงิน" [(ngModel)]='mon' [(ngModel)]='moneypay' [ngModelOptions]="{standalone: true}">
+            </mat-form-field><br><br><br>
+            <br>
+            
+           เงินทอน : {{(mon)-(dis*3)}}
+           <br><br>  
+
+
+           <mat-form-field class="example-full-width">
+            <input matInput placeholder="ใส่หมาเลขโทรศัพท์" [(ngModel)]='tel'  [ngModelOptions]="{standalone: true}">
+          </mat-form-field><br>
+           <h4 style="text-align:center"><button class="btn" (click)="setShow()">ค้นหาสมาชิก</button></h4>
+        <div *ngIf="isShow3">
+          <br>
+          Thank You :: {{Member.member.id}}  {{Member.member.name}}
+          <br>
+            <mat-form-field>
+              <mat-select  placeholder="เลือกของแถม"  >
+                <mat-option (click)=save_gift(user.id) *ngFor="let user of Gift" [(value)]="user.name">
+                  {{user.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field><br>
+
+            <input type="button" onclick="window.location='cashpay'"  value="Back">&nbsp;&nbsp;
+        
+            <input type="button" value="CONFIRM" (click)="save()">&nbsp;&nbsp;
+            
+              
+            <input type="button" onclick="window.location='trancash' "  value="ดูใบเสร็จ">
+
+          </div>
+
+        <div *ngIf="isShow4">
+            <br>
+            Thank You 
+            <br><br>
+            <input type="button" onclick="window.location='cashpay'"  value="Back">&nbsp;&nbsp;
+        
+            <input type="button" value="ยืนยัน" (click)="save2()">&nbsp;&nbsp;
+            
+              
+            <input type="button" onclick="window.location='trancash' "  value="ดูใบเสร็จ">
+        </div>
+        
+
+ 
+
+      </mat-card><br>
+      

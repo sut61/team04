@@ -10,6 +10,7 @@ import { LoginMemberService } from '../shared/LoginMember/login-member.service';
 })
 export class LoginMemberComponent implements OnInit {
   Member: Array<any>
+  ember: Array<any>
   username:any
   password:any
   login:any
@@ -20,6 +21,10 @@ export class LoginMemberComponent implements OnInit {
     this.loginMemberService.getMember().subscribe(data => {
       this.Member = data;
       console.log(this.Member);
+    });
+    this.loginMemberService.getember().subscribe(data => {
+      this.ember = data;
+      console.log(this.ember);
     });
   }
 

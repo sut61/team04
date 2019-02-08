@@ -13,5 +13,8 @@ export class LoginMemberService {
   getMember(): Observable<any> {
     return this.http.get(this.API + '/Member/');
   }
+  getember(): Observable<any> {
+    return this.http.get(this.API + '/Score/');
+  }
   
 }

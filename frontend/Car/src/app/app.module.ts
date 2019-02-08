@@ -20,6 +20,8 @@ import { LoginMemberComponent } from './login-member/login-member.component';
 import { MenuComponent } from './menu/menu.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ComplainDescriptionComponent } from './complain-description/complain-description.component';
+import { EmergencyComponent } from './emergency/emergency.component';
+
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
   { path: 'login-member', component: LoginMemberComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'complaindescription', component: ComplainDescriptionComponent },
-  { path: '', redirectTo: 'login-member', pathMatch: 'full' }
+  { path: '', redirectTo: 'login-member', pathMatch: 'full' },
+  { path: 'emergency', component: EmergencyComponent },
 ];
 
 @NgModule({
@@ -49,7 +52,9 @@ const appRoutes: Routes = [
     ComplainComponent,
     LoginMemberComponent,
     MenuComponent,
-    ComplainDescriptionComponent
+    ComplainDescriptionComponent,
+    EmergencyComponent,
+
   ],
   imports: [
     BrowserModule,

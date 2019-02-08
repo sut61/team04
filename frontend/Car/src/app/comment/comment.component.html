@@ -1,22 +1,46 @@
 <mat-toolbar>My App</mat-toolbar>
+<mat-card>
+    <div align="center">
+    เลือกชนิดรถ
+    <br><br>
+    <div *ngIf="message">
+      กรุณากรอกมูลให้ครบ
+      <br><br>
+    </div>
 <mat-radio-group >
-  <mat-radio-button (click)="setDriver('true')" value='true'>Option 1</mat-radio-button>
-  <mat-radio-button (click)="setDriver('false')" value='false'>Option 2</mat-radio-button>
+  <mat-radio-button (click)="setDriver('true')" value='true'>driver</mat-radio-button>&nbsp;
+  <mat-radio-button (click)="setDriver('false')" value='false'>driver Taxi</mat-radio-button>
 </mat-radio-group>
 <br>
 <br>
-<mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Comment" [(ngModel)]='comment' [ngModelOptions]="{standalone: true}"></textarea>
-</mat-form-field>
+เลือกคนขับ
 <br>
 <mat-form-field>
   <mat-select >
-    <mat-option *ngFor="let user of Drivers" [value]="user.firstName"
-    (click)="saveDriver(user.id)">
-      {{user.firstName}}
+    <mat-option *ngFor="let user of Drivers" [value]="user.name"
+    (click)="saveDriver(user)">
+      {{user.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+  ให้คะแนน
+<br>
+  <mat-form-field>
+  <mat-select >
+    <mat-option *ngFor="let user of Score" [value]="user.point"
+    (click)="saveScore(user)">
+      {{user.point}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 <br>
 
+<mat-form-field class="example-full-width">
+  <textarea matInput placeholder="Comment" [(ngModel)]='comment' [ngModelOptions]="{standalone: true}"></textarea>
+</mat-form-field>
+<br>
+
 <button (click)="testSave()">summit!!</button>
+ </div>
+</mat-card>

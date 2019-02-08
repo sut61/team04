@@ -24,9 +24,10 @@ public class DemoApplication {
 							DriverTaxiRepository driverTaxiRepository,
 							TimeRangeRepository timeRangeRepository,
 							AdminRepository adminRepository,
-						    CauseRepository causeRepository,
-							   PriceTypeRepository priceTypeRepository,
-							   ScoreRepository scoreRepository) {
+							GiftRepository giftRepository,
+							CauseRepository causeRepository,
+							PriceTypeRepository priceTypeRepository,
+							ScoreRepository scoreRepository) {
 		return args -> {
 			Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
 					"AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
@@ -138,7 +139,20 @@ public class DemoApplication {
 		
 
 		adminRepository.findAll().forEach(System.out::println);
-		};
+		
+	
+		Stream.of("ลูกอม", "ขนมอมยิ้ม", "พวงกุญแจ").forEach(name -> {
+			Gift gift = new Gift();
+			gift.setName(name);
+			giftRepository.save(gift);
+		});
+		giftRepository.findAll().forEach(System.out::println);
+	
+	
+	
+	};
+
+		
 
 		
 		

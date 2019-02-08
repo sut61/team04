@@ -20,8 +20,8 @@
   <br>
   <mat-form-field>
     <mat-select  placeholder="สาเหตุที่เสีย"  >
-      <mat-option (click)="savecause(user.id)" *ngFor="let user of Cause" [(value)]="user.cause">
-        {{user.cause}}
+      <mat-option (click)="savecause(user.id)" *ngFor="let user of Cause" [(value)]="user.causeType">
+        {{user.causeType}}
       </mat-option>
     </mat-select>
   </mat-form-field>

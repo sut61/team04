@@ -32,8 +32,24 @@ public class Comment {
     @ManyToOne
     private DriverTaxi driverTaxi;
 
-    @Size(min =10,max=20 ) @NotNull
-    @Pattern(regexp ="\\w")
+    @Size(min =5,max=20 ) @NotNull
+   @Pattern(regexp ="\\w+")
     private String Comment;
+
+    @Size(min =1,max=20 ) @NotNull
+    @Pattern(regexp ="\\w+")
+    private String nameDriver;
+
+    @Size(min =1,max=20 ) @NotNull
+    @Pattern(regexp ="\\w+")
+    private String nameMamber;
+
+    @Size(min =10,max=10 ) @NotNull
+    @Pattern(regexp ="08\\d+")
+    private String phoneDriver;
+
+    @Size(min =10,max=10 ) @NotNull
+    @Pattern(regexp ="08\\d+")
+    private String phoneMamber;
 
 }

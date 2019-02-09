@@ -40,7 +40,7 @@ export class CashpayComponent implements OnInit {
       setShow(){
         if(this.isShow3 == true ){
           this.isShow3 = false; 
-        }else if(this.tel==this.Member.member.phone){
+        }else if(this.tel==this.Member.phone){
           this.isShow3 = true;
         }
         else{
@@ -70,9 +70,13 @@ export class CashpayComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cashpayService.getLoginMember().subscribe(data => {
+    this.cashpayService.getMember().subscribe(data => {
       this.Member = data[0];
       console.log(this.Member);
+    });
+    this.cashpayService.getLoginDriver().subscribe(data => {
+      this.Driver = data[0];
+      console.log(this.Driver);
     });
 
 
@@ -100,9 +104,9 @@ export class CashpayComponent implements OnInit {
     //this.Distance = this.dis
     //this.Money = this.mon
     console.log("in save");
-    console.log(this.Driver.id+'is iD');console.log(this.Driver.name+'is Dname');console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');console.log(this.Member.member.id+'is member');console.log(this.gift_id+'gift ID');
+    console.log(this.Driver.id+'is iD');console.log(this.Driver.name+'is Dname');console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');console.log(this.Member.id+'is member');console.log(this.gift_id+'gift ID');
 
-    this.httpClient.post('http://localhost:8080/CashPay/'+this.Driver.id+'/'+this.Driver.name+'/'+this.distance+'/'+this.moneypay+'/'+this.change+'/'+this.Member.member.id+'/'+this.gift_id,this.cashpay)
+    this.httpClient.post('http://localhost:8080/CashPay/'+this.Driver.id+'/'+this.Driver.name+'/'+this.distance+'/'+this.moneypay+'/'+this.change+'/'+this.Member.id+'/'+this.gift_id,this.cashpay)
     .subscribe(
       data => {
        }

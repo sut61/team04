@@ -55,35 +55,118 @@ public class DemoApplicationTests {
 		validator = factory.getValidator();
 	}
 
-/* // --------------------------------Test CashPay--------------------------------------------------------
+ // --------------------------------Test CashPay--------------------------------------------------------
 
 		@Test
 			public void testCorrect() {
-				CashPay c = new CashPay();
-				c.setDistance("20");
-				c.setMoneypay("30");
-				c.setChange("10");
+                CashPay c = new CashPay();
+                c.setDrivername("iampapon");
+				c.setDistance(20);
+				c.setMoneypay(30);
+				c.setChange(10);
 
 				try {
 					entityManager.persist(c);
 					entityManager.flush();
 
 					//fail("Should not pass to this line");
+				} catch(javax.validation.ConstraintViolationException e) {
+					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+					assertEquals(violations.isEmpty(), false);
+					assertEquals(violations.size(), 1);
+				}
+			}
+
+
+			@Test
+			public void testDriverNameNotNull() {
+				CashPay c = new CashPay();
+                c.setDrivername(null);
+				c.setDistance(80);
+				c.setMoneypay(55);
+				c.setChange(3);
+
+				try {
+					entityManager.persist(c);
+					entityManager.flush();
+
+					fail("Should not pass to this line");
+				} catch(javax.validation.ConstraintViolationException e) {
+					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+					assertEquals(violations.isEmpty(), false);
+					assertEquals(violations.size(), 1);
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDriverNameNotNull++++++++++++++++++++++++++++++");
+					System.out.println();
+					System.out.println(e.getMessage());
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDriverNameNotNull++++++++++++++++++++++++++++++");
+					System.out.println();
+				}
+			}
+
+
+			@Test
+			public void testDriverNameNotOverSize() {
+
+                CashPay c = new CashPay();
+                c.setDrivername("iampaponkkongwattanasakkiampapon");
+				c.setDistance(55);
+				c.setMoneypay(20);
+				c.setChange(10);
+
+				try {
+					entityManager.persist(c);
+					entityManager.flush();
+
+					fail("Should not pass to this line");
+				} catch(javax.validation.ConstraintViolationException e) {
+					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+					assertEquals(violations.isEmpty(), false);
+					assertEquals(violations.size(), 1);
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDriverNameNotOverSize++++++++++++++++++++++++++++++");
+					System.out.println();
+					System.out.println(e.getMessage());
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDriverNameNotOverSize++++++++++++++++++++++++++++++");
+					System.out.println();
+				}
+			}
+
+			@Test
+			public void testDrivernameNotSmallerSize() {
+                CashPay c = new CashPay();
+                c.setDrivername("i");
+				c.setDistance(55);
+				c.setMoneypay(20555);
+				c.setChange(10);
+
+				try {
+					entityManager.persist(c);
+					entityManager.flush();
+
+					fail("Should not pass to this line");
 				} catch(javax.validation.ConstraintViolationException e) {
 					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 					assertEquals(violations.isEmpty(), false);
 					assertEquals(violations.size(), 2);
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDrivernameNotSmallerSize++++++++++++++++++++++++++++++");
+					System.out.println();
+					System.out.println(e.getMessage());
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDrivernameNotSmallerSize++++++++++++++++++++++++++++++");
+					System.out.println();
 				}
 			}
-
-
-			@Test
-			public void testDistanceCannotBeNull() {
-				CashPay c = new CashPay();
-
-				c.setDistance(null);
-				c.setMoneypay("55");
-				c.setChange("3");
+            @Test
+			public void testDrivernamePattern() {
+                CashPay c = new CashPay();
+                c.setDrivername("papon+papon");
+				c.setDistance(55);
+				c.setMoneypay(20);
+				c.setChange(65);
 
 				try {
 					entityManager.persist(c);
@@ -95,23 +178,21 @@ public class DemoApplicationTests {
 					assertEquals(violations.isEmpty(), false);
 					assertEquals(violations.size(), 1);
 					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testDistanceCannotBeNull++++++++++++++++++++++++++++++");
+					System.out.println("++++++++++++++++++++++++++++++testDrivernamePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 					System.out.println(e.getMessage());
 					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testDistanceCannotBeNull++++++++++++++++++++++++++++++");
+					System.out.println("++++++++++++++++++++++++++++++testDrivernamePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-			}
-
-
-			@Test
-			public void testCointnotnecative() {
-
-				CashPay c = new CashPay();
-				c.setDistance("55");
-				c.setMoneypay("20");
-				c.setChange("-10");
+            } 
+            
+            public void testDistanceNotOverSize() {
+                CashPay c = new CashPay();
+                c.setDrivername("paponpapon");
+				c.setDistance(1500);
+				c.setMoneypay(20);
+				c.setChange(65);
 
 				try {
 					entityManager.persist(c);
@@ -123,46 +204,22 @@ public class DemoApplicationTests {
 					assertEquals(violations.isEmpty(), false);
 					assertEquals(violations.size(), 1);
 					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testCointnotnecative++++++++++++++++++++++++++++++");
+					System.out.println("++++++++++++++++++++++++++++++testDrivernamePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 					System.out.println(e.getMessage());
 					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testCointnotnecative++++++++++++++++++++++++++++++");
+					System.out.println("++++++++++++++++++++++++++++++testDrivernamePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-			}
-
-			@Test
-			public void testMoneyNotOverSize() {
-				CashPay c = new CashPay();
-				c.setDistance("55");
-				c.setMoneypay("20555");
-				c.setChange("10");
-
-				try {
-					entityManager.persist(c);
-					entityManager.flush();
-
-					//fail("Should not pass to this line");
-				} catch(javax.validation.ConstraintViolationException e) {
-					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-					assertEquals(violations.isEmpty(), false);
-					assertEquals(violations.size(), 3);
-					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testMoneyNotOverSize++++++++++++++++++++++++++++++");
-					System.out.println();
-					System.out.println(e.getMessage());
-					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testMoneyNotOverSize++++++++++++++++++++++++++++++");
-					System.out.println();
-				}
-			}
-
-			public void testChangePattern() {
-				CashPay c = new CashPay();
-				c.setDistance("55");
-				c.setMoneypay("20");
-				c.setChange("0254165");
+            } 
+            
+            @Test
+			public void testDistanceNotLessthanMin() {
+                CashPay c = new CashPay();
+                c.setDrivername("paponpapon");
+				c.setDistance(0);
+				c.setMoneypay(20);
+				c.setChange(65);
 
 				try {
 					entityManager.persist(c);
@@ -174,14 +231,94 @@ public class DemoApplicationTests {
 					assertEquals(violations.isEmpty(), false);
 					assertEquals(violations.size(), 1);
 					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testChangePattern++++++++++++++++++++++++++++++");
+					System.out.println("++++++++++++++++++++++++++++++testDrivernamePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 					System.out.println(e.getMessage());
 					System.out.println();
-					System.out.println("++++++++++++++++++++++++++++++testChangePattern++++++++++++++++++++++++++++++");
+					System.out.println("++++++++++++++++++++++++++++++testDrivernamePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-			} */
+            } 
+            @Test
+            public void testDistanceNotOverMax() {
+                CashPay c = new CashPay();
+                c.setDrivername("paponpapon");
+				c.setDistance(1500);
+				c.setMoneypay(20);
+				c.setChange(65);
+
+				try {
+					entityManager.persist(c);
+					entityManager.flush();
+
+					fail("Should not pass to this line");
+				} catch(javax.validation.ConstraintViolationException e) {
+					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+					assertEquals(violations.isEmpty(), false);
+					assertEquals(violations.size(), 1);
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDistanceNotOverMax++++++++++++++++++++++++++++++");
+					System.out.println();
+					System.out.println(e.getMessage());
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testDistanceNotOverMax++++++++++++++++++++++++++++++");
+					System.out.println();
+				}
+            } 
+
+            @Test
+			public void testMoneyNotLessthanMin() {
+                CashPay c = new CashPay();
+                c.setDrivername("paponpapon");
+				c.setDistance(82);
+				c.setMoneypay(5000);
+				c.setChange(65);
+
+				try {
+					entityManager.persist(c);
+					entityManager.flush();
+
+					fail("Should not pass to this line");
+				} catch(javax.validation.ConstraintViolationException e) {
+					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+					assertEquals(violations.isEmpty(), false);
+					assertEquals(violations.size(), 1);
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testMoneyNotLessthanMin++++++++++++++++++++++++++++++");
+					System.out.println();
+					System.out.println(e.getMessage());
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testMoneyNotLessthanMin++++++++++++++++++++++++++++++");
+					System.out.println();
+				}
+            } 
+
+            @Test
+			public void testMoneyNotOverMax() {
+                CashPay c = new CashPay();
+                c.setDrivername("paponpapon");
+				c.setDistance(82);
+				c.setMoneypay(1);
+				c.setChange(65);
+
+				try {
+					entityManager.persist(c);
+					entityManager.flush();
+
+					fail("Should not pass to this line");
+				} catch(javax.validation.ConstraintViolationException e) {
+					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+					assertEquals(violations.isEmpty(), false);
+					assertEquals(violations.size(), 1);
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testMoneyNotLessthanMin++++++++++++++++++++++++++++++");
+					System.out.println();
+					System.out.println(e.getMessage());
+					System.out.println();
+					System.out.println("++++++++++++++++++++++++++++++testMoneyNotLessthanMin++++++++++++++++++++++++++++++");
+					System.out.println();
+				}
+            } 
     // --------------------------------Test Emergency--------------------------------------------------------
 
 	@Test
@@ -806,7 +943,7 @@ public class DemoApplicationTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("++++++++++++++++++++++++++++++testPatternName++++++++++++++++++++++++++++++");
             System.out.println();
@@ -834,7 +971,7 @@ public class DemoApplicationTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("++++++++++++++++++++++++++++++testSizeTel++++++++++++++++++++++++++++++");
             System.out.println();
@@ -862,7 +999,7 @@ public class DemoApplicationTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("++++++++++++++++++++++++++++++testSizeAddress++++++++++++++++++++++++++++++");
             System.out.println();
@@ -891,7 +1028,7 @@ public class DemoApplicationTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("++++++++++++++++++++++++++++++testPatternEmail++++++++++++++++++++++++++++++");
             System.out.println();
@@ -919,7 +1056,7 @@ public class DemoApplicationTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("++++++++++++++++++++++++++++++testNullName++++++++++++++++++++++++++++++");
             System.out.println();

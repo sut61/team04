@@ -24,6 +24,7 @@ export class DriverComponent implements OnInit {
   address: any
   tel: any
   email: any
+  dr: boolean = false
   constructor(private httpClient: HttpClient, private router: Router, private driverService: DriverService) { }
 
   ngOnInit() {
@@ -59,6 +60,7 @@ export class DriverComponent implements OnInit {
   }
 
   save(){
+    if(this.name!=null&&this.tel!=null&&this.address!=null&&this.email){
     console.log("insave");
     this.httpClient.post('http://localhost:8080/Driver/'+this.gender_id1+'/'+this.province_id1+'/'+this.cartype_id1+'/'+this.name+'/'+this.tel+'/'+this.address+'/'+this.email+'/'+this.username+'/'+this.password,this.driver)
     .subscribe(
@@ -66,8 +68,10 @@ export class DriverComponent implements OnInit {
         //alert("บันทึกสำเร็จ")
         this.router.navigate(['savefinish'])
        }
-       
      );
+    }else{
+      this.dr=true
+    }
   }
 
 }

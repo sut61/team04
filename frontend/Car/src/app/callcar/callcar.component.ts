@@ -80,17 +80,17 @@ export class CallcarComponent implements OnInit {
       setTimeout(function() {
         this.hideplace = false;
       }.bind(this), 5000);
-    }
+    }else{
 
     console.log("saved");
     this.httpClient.post('http://localhost:8080/Callcar/'+this.Dest+'/'+this.Cur+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember.member.id,this.callcar)
     .subscribe(
       data => {
-        alert("Saved")
        }
      );
      this.router.navigate(['/callcarsum']);
      console.log(this.Dest+'/'+this.Cur+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember);
+    }
   }
 
 }

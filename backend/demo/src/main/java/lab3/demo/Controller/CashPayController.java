@@ -49,11 +49,12 @@ public class CashPayController {
         return cashpayrepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping(path = "CashPay/{id_driver}/{distance}/{moneypay}/{change}/{id_member}/{id_gift}")
+    @PostMapping(path = "CashPay/{id_driver}/{drivername}/{distance}/{moneypay}/{change}/{id_member}/{id_gift}")
     public CashPay CashPay(@PathVariable Long id_driver,
-                           @PathVariable String distance,
-                           @PathVariable String moneypay,
-                           @PathVariable String change,
+                           @PathVariable String drivername,
+                           @PathVariable int distance,
+                           @PathVariable int moneypay,
+                           @PathVariable int change,
                            @PathVariable Long id_member,
                            @PathVariable Long id_gift){
         Optional<Member> member = memberrepository.findById(id_member);
@@ -62,6 +63,7 @@ public class CashPayController {
 
         CashPay cashpay = new CashPay();
         cashpay.setDriver(driver.get());
+        cashpay.setDrivername(drivername);
         cashpay.setDistance(distance);
         cashpay.setMoneypay(moneypay);
         cashpay.setChange(change);
@@ -72,17 +74,19 @@ public class CashPayController {
 
     }
 
-    @PostMapping(path = "CashPay2/{id_driver}/{distance}/{moneypay}/{change}")
+    @PostMapping(path = "CashPay2/{id_driver}/{drivername}/{distance}/{moneypay}/{change}")
     public CashPay CashPay(@PathVariable Long id_driver,
-                           @PathVariable String distance,
-                           @PathVariable String moneypay,
-                           @PathVariable String change){
+                           @PathVariable String drivername,
+                           @PathVariable int distance,
+                           @PathVariable int moneypay,
+                           @PathVariable int change){
        
         Optional<Driver> driver = driverrepository.findById(id_driver);
         
 
         CashPay cashpay = new CashPay();
         cashpay.setDriver(driver.get());
+        cashpay.setDrivername(drivername);
         cashpay.setDistance(distance);
         cashpay.setMoneypay(moneypay);
         cashpay.setChange(change);

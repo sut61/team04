@@ -2,6 +2,9 @@ package lab3.demo.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity
@@ -23,10 +26,18 @@ public class Driver {
     @ManyToOne
     private CarType carType;
 
-    private @NonNull String name;
-    private @NonNull String tel;
-    private @NonNull String address;
-    private @NonNull String email;
+    @Pattern(regexp ="[\\w\\s]+")
+    private @NotNull String name;
+
+    @Size(min=10 , max=10)
+    @Pattern(regexp = "0[89]\\d+]")
+    private @NotNull String tel;
+
+    @Size(min=10 , max=50)
+    private @NotNull String address;
+
+    @Pattern(regexp ="[\\w\\s]+@[\\w\\s]+[\\.]com")
+    private @NotNull String email;
 
 
 }

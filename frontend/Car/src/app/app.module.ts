@@ -23,6 +23,8 @@ import { ComplainDescriptionComponent } from './complain-description/complain-de
 import { EmergencyComponent } from './emergency/emergency.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CashpayComponent } from './cashpay/cashpay.component';
+import { ReservecarComponent } from './reservecar/reservecar.component';
+import { ReservesumComponent } from './reservesum/reservesum.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -37,6 +39,8 @@ const appRoutes: Routes = [
   { path: 'discount', component: DiscountComponent },
   { path: 'login-member', component: LoginMemberComponent },
   { path: 'menu', component: MenuComponent },
+  { path: 'reserve', component: ReservecarComponent },
+  { path: 'reservesum', component: ReservesumComponent },
   { path: 'complaindescription', component: ComplainDescriptionComponent },
   { path: '', redirectTo: 'login-member', pathMatch: 'full' },
   { path: 'emergency', component: EmergencyComponent },
@@ -60,7 +64,9 @@ const appRoutes: Routes = [
     CashpayComponent,
 
     DiscountComponent,
-    ComplainDescriptionComponent
+    ComplainDescriptionComponent,
+    ReservecarComponent,
+    ReservesumComponent
   ],
   imports: [
     BrowserModule,

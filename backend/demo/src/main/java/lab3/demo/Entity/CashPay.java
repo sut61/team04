@@ -6,8 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-
+import javax.validation.constraints.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -28,20 +27,25 @@ public class CashPay {
     private Long id;
 
     
-    @Size(min=1,max=5)   
-     int distance;
+    // @Size(min=1,max=1000)
+    @Min(1)
+    @Max(1000)   
+    private int distance;
      
-    @Size(min=1,max=5) 
-     int moneypay;
+    // @Size(min=3,max=3000) 
+    @Min(3)
+    @Max(3000)
+    private int moneypay;
 
-    @Size(min=1,max=5)
-    @Pattern(regexp="\\d+")
-     int change;
+    // @Size(min=1,max=2997)
+    @Min(1)
+    @Max(2997)
+    private int change;
     
-    @NotNull
+    
     @Size(min=3,max=20)
-    //@Pattern(regexp="\\d+")
-    String drivername;
+    @Pattern(regexp ="[\\w\\s]+")
+    private @NotNull String drivername;
      
     
 @ManyToOne

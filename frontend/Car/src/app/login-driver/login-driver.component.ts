@@ -30,13 +30,13 @@ export class LoginDriverComponent implements OnInit {
     for(let check of this.Driver){
         if(this.username==check.username&&this.password==check.password){
           this.id_driver= check
-          this.httpClient.post('http://localhost:8080/menudriver/'+this.id_driver.id,this.login)          
+          this.httpClient.post('http://localhost:8080/LoginDriver/'+this.id_driver.id,this.login)          
           .subscribe(
           data => {
           alert("เข้าสู่ระบบสำเร็จ")
           }
           );
-          this.router.navigate(['/menu']);  
+          this.router.navigate(['/menudriver']);  
           var c =false;
         }else{
           var c =true;

@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 import lab3.demo.Repository.CashPayRepository;
+import lab3.demo.Repository.ReservecarRepository;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -37,6 +38,10 @@ public class DemoApplicationTests {
 
 	@Autowired
 	private EmergencyRepository emergencyRepository;
+
+	@Autowired
+    private ReservecarRepository reservecarRepository;
+
 
 	private Validator validator;
 
@@ -303,5 +308,140 @@ public class DemoApplicationTests {
         }
     }
 
+	// --------------------------------Test Reservecar--------------------------------------------------------
+
+	@Test
+    public void testCorrectReservecar() {
+        Reservecar s = new Reservecar();
+        s.setDest("abcdefghijk");
+		s.setCur("abcdefghijkl");
+		s.setDate("31-12-19");
+        s.setTime("23:59");
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+		}
+    }
+
+	@Test
+    public void testCannotBeNullReservecar() {
+        Reservecar s = new Reservecar();
+        s.setDest(null);
+		s.setCur(null);
+		s.setDate(null);
+        s.setTime(null);
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 4);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testCannotBeNullReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testCannotBeNullReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+		}
+    }
+
+	@Test
+    public void testTooShortReservecar() {
+        Reservecar s = new Reservecar();
+        s.setDest("abc");
+		s.setCur("abc");
+		s.setDate("31-12-19");
+        s.setTime("23:59");
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooShortReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooShortReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+        }
+    }
+
+	@Test
+    public void testTooLongReservecar() {
+        Reservecar s = new Reservecar();
+        s.setDest("abcdefghijklmnop");
+		s.setCur("abcdefghijklmnop");
+		s.setDate("31-12-19");
+        s.setTime("23:59");
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooLongReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooLongReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+        }
+    }
+
+	@Test
+    public void testPatternReservecar() {
+        Reservecar s = new Reservecar();
+        s.setDest("abcdefghijk");
+		s.setCur("abcdefghijk");
+		s.setDate("31/12/19");
+        s.setTime("23.59");
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testPatternReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testPatternReservecar++++++++++++++++++++++++++++++");
+			System.out.println();
+		}
+    }
+
+	// --------------------------------Test Reservecar--------------------------------------------------------
 }
 

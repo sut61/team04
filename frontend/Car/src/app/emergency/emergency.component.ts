@@ -21,7 +21,7 @@ export class EmergencyComponent implements OnInit {
 
   position: any
   phone: any
-
+  fa: boolean = false
   constructor(private httpClient: HttpClient, private router: Router, private emergencyService: EmergencyService) { }
   
   ngOnInit() {
@@ -68,6 +68,7 @@ export class EmergencyComponent implements OnInit {
   }
 
   save(){
+    if(this.position!=null&&this.phone!=null){
     console.log("insave");
     this.httpClient.post('http://localhost:8080/Emergency/'+this.position+'/'+this.phone+'/'+this.cause_id+'/'+this.member_id+'/'+this.driver_id+'/'+this.pricetype_id,this.emergency)
     .subscribe(
@@ -76,6 +77,9 @@ export class EmergencyComponent implements OnInit {
         this.router.navigate(['savefinish'])
        }
      );
+      }else{
+        this.fa=true
+      }
   }
 
 }

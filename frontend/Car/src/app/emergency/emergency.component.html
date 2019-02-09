@@ -1,6 +1,10 @@
 <mat-toolbar>เรียกรถฉุกเฉิน</mat-toolbar>
 <mat-card>
   <div align="center">
+      <div *ngIf="fa">
+          กรุณากรอกมูลให้ครบ
+          <br><br>
+        </div>
 <form class="example-form">
   <mat-form-field>
    <mat-select  placeholder="ชื่อพนักงาน"  >

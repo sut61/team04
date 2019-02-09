@@ -1,0 +1,111 @@
+<mat-card>
+  <mat-toolbar color="primary">
+      Reserve Car App
+  </mat-toolbar>
+  <h2>
+    <div align="center">
+      Where do you want to go?
+    </div>
+  </h2>
+  <h4>
+    <div align="center">
+      <mat-form-field>
+        <input matInput placeholder="Destination" [(ngModel)]='Dest' [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div align="center">
+      <mat-form-field>
+        <input matInput placeholder="Current Location" [(ngModel)]='Cur' [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+
+    <!-- <div align="center">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="When?" [(ngModel)]='Datepick' [ngModelOptions]="{standalone: true}">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker touchUi disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div> -->
+
+    <!-- <div align="center" class="width">
+      <mat-form-field>
+        <input matInput placeholder="When? (DD-MM-YYYY)" [(ngModel)]='Datepick' [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div> -->
+
+    <div align="center" class="width">
+      When?
+    </div>
+
+    <div align="center" class="width">
+            <mat-form-field style="text-align: center">
+              <input (keypress)="numberOnly($event)" type="text" matInput #input maxlength="2" placeholder="DD" [(ngModel)]='DD' [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            /
+            <mat-form-field  style="text-align: center">
+              <input (keypress)="numberOnly($event)" type="text" matInput #input maxlength="2" placeholder="MM" [(ngModel)]='MM' [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+            /
+            <mat-form-field  style="text-align: center">
+              <input (keypress)="numberOnly($event)" type="text" matInput #input maxlength="2" placeholder="YY" [(ngModel)]='YY' [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+    </div>
+
+    <div align="center" class="width">
+      Time?
+    </div>
+
+    <div align="center" class="width">
+      <mat-form-field style="text-align: center">
+        <input (keypress)="numberOnly($event)" type="text" matInput #input maxlength="2" placeholder="HH" [(ngModel)]='HH' [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      /
+      <mat-form-field  style="text-align: center">
+        <input (keypress)="numberOnly($event)" type="text" matInput #input maxlength="2" placeholder="MM" [(ngModel)]='Mi' [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+
+    <div align="center">
+      <mat-form-field>
+        <mat-select placeholder="Car Type">
+          <mat-option (click)="savecartype(car.id)" *ngFor="let car of CarType" [(value)]="car.name">
+            {{car.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div align="center">
+      <mat-form-field>
+        <mat-select placeholder="Driver">
+          <mat-option (click)="savedriver(dr.id)" *ngFor="let dr of Driver" [(value)]="dr.name">
+            {{dr.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </h4>
+  <h2>
+      <div *ngIf="hidenull" align="center">
+          Please Fill in the Blanks!
+      </div>
+      <div *ngIf="hidedate" align="center">
+        Date or Time does not correct!
+      </div>
+      <div *ngIf="hideplace" align="center">
+        Destination cannot be same place as where you are!
+      </div>
+      <div *ngIf="hidedr" align="center">
+        Driver unavailable now SORRY
+      </div>
+  </h2>
+  <br>
+  <mat-divider></mat-divider>
+  <h4>
+  <br><br>
+    <div align="center" style="min-height: 300px">
+      <a mat-raised-button color="primary" (click)="save()">Confirm</a>
+      <button mat-raised-button color="primary" routerLink="/menu">Cancel</button>
+    </div>
+  </h4>
+</mat-card>
+

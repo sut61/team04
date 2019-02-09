@@ -1,6 +1,10 @@
 <mat-toolbar>ส่งคำร้องเรียน</mat-toolbar>
 <mat-card>
 <div align="center">
+    <div *ngIf="message">
+        กรุณากรอกมูลให้ครบ
+        <br><br>
+      </div>
   เลือกประเภทรถ
 <mat-radio-group >
   <mat-radio-button (click)="setDriver('true')" value='true'>Driver </mat-radio-button>&nbsp;

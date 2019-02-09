@@ -21,7 +21,7 @@ public class DriverPCTController {
     public DriverPCTController (CareerRepository careerrepository, 
                              GenderRepository genderrepository,
                              ProvinceRepository provincerepository,
-                             MemberRepository memberrepository){
+                             DriverPCTRepository driverpctrepository){
         this.careerrepository = careerrepository;
         this.genderrepository = genderrepository;
         this.provincerepository = provincerepository;

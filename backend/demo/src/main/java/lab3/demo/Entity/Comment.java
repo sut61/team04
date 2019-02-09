@@ -33,23 +33,23 @@ public class Comment {
     private DriverTaxi driverTaxi;
 
     @Size(min =5,max=20 ) @NotNull
-   @Pattern(regexp ="\\w+")
+    @Pattern(regexp ="[\\w\\s]+")
     private String Comment;
 
     @Size(min =1,max=20 ) @NotNull
-    @Pattern(regexp ="\\w+")
+    @Pattern(regexp ="[\\w\\s]+")
     private String nameDriver;
 
     @Size(min =1,max=20 ) @NotNull
-    @Pattern(regexp ="\\w+")
+    @Pattern(regexp ="[\\w\\s]+")
     private String nameMamber;
 
     @Size(min =10,max=10 ) @NotNull
-    @Pattern(regexp ="08\\d+")
+    @Pattern(regexp ="0[98]\\d+")
     private String phoneDriver;
 
     @Size(min =10,max=10 ) @NotNull
-    @Pattern(regexp ="08\\d+")
+    @Pattern(regexp ="0[98]\\d+")
     private String phoneMamber;
 
 }

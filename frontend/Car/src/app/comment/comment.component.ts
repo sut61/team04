@@ -58,6 +58,8 @@ export class CommentComponent implements OnInit {
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")
+        this.router.navigate(['/CommentDescription']); 
+
        }
      );
     }else if(this.type == "false"){
@@ -66,6 +68,7 @@ export class CommentComponent implements OnInit {
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")
+        this.router.navigate(['/CommentDescription']); 
        }
      );
     }

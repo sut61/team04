@@ -19,6 +19,7 @@ export class ComplainComponent implements OnInit {
   com:any
   point:Number
 
+  message:boolean = false
   type:any
   constructor(private httpClient: HttpClient,private router: Router,private complainService: ComplainService) { }
 
@@ -42,13 +43,14 @@ export class ComplainComponent implements OnInit {
   }
 
   testSave(){
+    if(this.comment!=null){
     if(this.type=="true"){
     console.log(this.ID_Driver)
     console.log(this.MemberLogin.member.id)
     this.httpClient.post('http://localhost:8080/Complain1/'+this.comment+'/'+this.ID_Driver+'/'+this.MemberLogin.member.id,this.com)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
+        //alert("บันทึกสำเร็จ")
         this.router.navigate(['/complaindescription']); 
        }
      );
@@ -58,10 +60,14 @@ export class ComplainComponent implements OnInit {
     this.httpClient.post('http://localhost:8080/Complain2/'+this.comment+'/'+this.ID_Driver+'/'+this.MemberLogin.member.id,this.com)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
+        //alert("บันทึกสำเร็จ")
         this.router.navigate(['/complaindescription']); 
        }
      );
+    }
+
+    }else {
+      this.message=true
     }
   }
 

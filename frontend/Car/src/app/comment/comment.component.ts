@@ -51,13 +51,13 @@ export class CommentComponent implements OnInit {
   }
 
   testSave(){
-    if(this.comment!=null&&this.typeSelec==1&&this.comment.length!>=5){
+    if(this.comment!=null&&this.typeSelec==1){
     if(this.type=="true"){
     console.log(this.MemberLogin.member.name)
     this.httpClient.post('http://localhost:8080/Comment1/'+this.comment+'/'+this.ID_Driver.name+'/'+this.MemberLogin.member.name+'/'+this.ID_Driver.tel+'/'+this.MemberLogin.member.phone+'/'+this.ID_Score.id+'/'+this.ID_Driver.id+'/'+this.MemberLogin.member.id,this.com)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
+        //alert("บันทึกสำเร็จ")
         this.router.navigate(['/CommentDescription']); 
 
        }
@@ -67,7 +67,7 @@ export class CommentComponent implements OnInit {
     this.httpClient.post('http://localhost:8080/Comment2/'+this.comment+'/'+this.ID_Driver.name+'/'+this.MemberLogin.member.name+'/'+this.ID_Driver.tel+'/'+this.MemberLogin.member.phone+'/'+this.ID_Score.id+'/'+this.ID_Driver.id+'/'+this.MemberLogin.member.id,this.com)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
+       // alert("บันทึกสำเร็จ")
         this.router.navigate(['/CommentDescription']); 
        }
      );

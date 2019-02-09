@@ -4,8 +4,12 @@
   
   <h2 style="text-align:center" color="primary"><b>ชำระเงินค่าโดยสาร</b></h2>
   <br>
+  <div *ngIf="message">
+      กรุณากรอกมูลให้ครบ
+      <br><br>
+    </div>
   <mat-form-field class="example-full-width">
-    
+      
      <input matInput placeholder="กรอกชื่อคนขับ" [(ngModel)]='dnam'  [ngModelOptions]="{standalone: true}">
       </mat-form-field><br>
      <h4 style="text-align:center"><button class="btnn" (click)="setShow2()">ตรวจสอบรายชื่อ</button></h4>
@@ -44,7 +48,7 @@
            <h4 style="text-align:center"><button class="btn" (click)="setShow()">ค้นหาสมาชิก</button></h4>
         <div *ngIf="isShow3">
           <br>
-          Thank You :: {{Member.member.id}}  {{Member.member.name}}
+          Thank You :: {{Member.id}}  {{Member.name}}
           <br>
             <mat-form-field>
               <mat-select  placeholder="เลือกของแถม"  >

@@ -34,16 +34,17 @@ export class CashpayComponent implements OnInit {
   isShow3:boolean = false;
   isShow4:boolean = false;
   isShow5:boolean = false;
+  message:boolean = false;
 
 
       setShow(){
         if(this.isShow3 == true ){
           this.isShow3 = false; 
-        }else if(this.tel==this.Member.member.phone){
+        }else if(this.tel==this.Member.phone){
           this.isShow3 = true;
         }
         else{
-          alert("ไม่ได้เป็นสมาชิก")
+          // alert("ไม่ได้เป็นสมาชิก")
           this.isShow4 = true;
         
         }
@@ -57,7 +58,7 @@ export class CashpayComponent implements OnInit {
           this.isShow5 = true;
         }
         else{
-          alert("ไม่ได้เป็นสมาชิก")
+          // alert("ไม่ได้เป็นสมาชิก")
         
         }
      
@@ -69,9 +70,13 @@ export class CashpayComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cashpayService.getLoginMember().subscribe(data => {
+    this.cashpayService.getMember().subscribe(data => {
       this.Member = data[0];
       console.log(this.Member);
+    });
+    this.cashpayService.getLoginDriver().subscribe(data => {
+      this.Driver = data[0];
+      console.log(this.Driver);
     });
 
 
@@ -93,22 +98,26 @@ export class CashpayComponent implements OnInit {
   }
 
   save(){
+    if(this.distance!=null && this.moneypay!=null){
     var a = this.mon -(this.dis*3) 
     this.change = a
     //this.Distance = this.dis
     //this.Money = this.mon
     console.log("in save");
-    console.log(this.Driver.id+'is iD');console.log(this.Driver.name+'is Dname');console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');console.log(this.Member.member.id+'is member');console.log(this.gift_id+'gift ID');
+    console.log(this.Driver.id+'is iD');console.log(this.Driver.name+'is Dname');console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');console.log(this.Member.id+'is member');console.log(this.gift_id+'gift ID');
 
-    this.httpClient.post('http://localhost:8080/CashPay/'+this.Driver.id+'/'+this.Driver.name+'/'+this.distance+'/'+this.moneypay+'/'+this.change+'/'+this.Member.member.id+'/'+this.gift_id,this.cashpay)
+    this.httpClient.post('http://localhost:8080/CashPay/'+this.Driver.id+'/'+this.Driver.name+'/'+this.distance+'/'+this.moneypay+'/'+this.change+'/'+this.Member.id+'/'+this.gift_id,this.cashpay)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
        }
      );
+      }else{
+        this.message=true
+      }
   }
 
     save2(){
+      if(this.distance!=null && this.moneypay!=null){
       var a = this.mon -(this.dis*3) 
       this.change = a
     
@@ -118,9 +127,11 @@ export class CashpayComponent implements OnInit {
       this.httpClient.post('http://localhost:8080/CashPay2/'+this.Driver.id+'/'+this.Driver.name+'/'+this.distance+'/'+this.moneypay+'/'+this.change,this.cashpay)
       .subscribe(
         data => {
-          alert("บันทึกสำเร็จ")
         }
       );
+    }else{
+      this.message=true
+    }
     }
 
   savemember(member_id){

@@ -13,6 +13,9 @@ export class CashpayService {
   getLoginMember(): Observable<any> {
     return this.http.get(this.API + '/loginmember/');
   }
+  getLoginDriver():Observable<any> {
+    return this.http.get(this.API + '/logindriver/');
+  }
   getDistance(): Observable<any> {
     return this.http.get(this.API + '/Distance/');
   }
@@ -27,6 +30,10 @@ export class CashpayService {
   }
   getGift(): Observable<any> {
     return this.http.get(this.API + '/Gift/');
+  }
+
+  getCashpay(): Observable<any> {
+    return this.http.get(this.API + '/cashpay/');
   }
 
  

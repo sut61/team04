@@ -32,7 +32,7 @@ public class Emergency {
     @NotNull String position;
 
     @Size (min=10 , max=10)
-    @Pattern(regexp = "0[89]\\d+]")
+    @Pattern(regexp = "0[89]\\d+")
     @NotNull String phone;
 
 

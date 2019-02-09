@@ -43,6 +43,9 @@ public class DemoApplicationTests {
 	@Autowired
     private ReservecarRepository reservecarRepository;
 
+	@Autowired
+    private CallcarRepository carcarRepository;
+
 
 	private Validator validator;
 
@@ -52,7 +55,7 @@ public class DemoApplicationTests {
 		validator = factory.getValidator();
 	}
 
-// --------------------------------Test CashPay--------------------------------------------------------
+/* // --------------------------------Test CashPay--------------------------------------------------------
 
 		@Test
 			public void testCorrect() {
@@ -178,7 +181,7 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testChangePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-			}
+			} */
     // --------------------------------Test Emergency--------------------------------------------------------
 
 	@Test
@@ -657,7 +660,106 @@ public class DemoApplicationTests {
 		//+++++++++++++++++++++++++++++++++++Complain+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 			// =================================moss Thirawuth=========================================================
+	
+	//+++++++++++++++++++++++++++++++++++TestCallcar+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+	@Test
+    public void testCorrectCallcar() {
+        Callcar s = new Callcar();
+        s.setDest("abcdefghijk");
+		s.setCur("abcdefghijkl");
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+		}
+    }
+
+	@Test
+    public void testCannotBeNullCallcar() {
+        Callcar s = new Callcar();
+        s.setDest(null);
+		s.setCur(null);
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testCannotBeNullCallcar++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testCannotBeNullCallcar++++++++++++++++++++++++++++++");
+			System.out.println();
+		}
+    }
+
+	@Test
+    public void testTooShortCallcar() {
+        Callcar s = new Callcar();
+        s.setDest("abc");
+		s.setCur("abc");
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooShortCallcar++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooShortCallcar++++++++++++++++++++++++++++++");
+			System.out.println();
+        }
+    }
+
+	@Test
+    public void testTooLongCallcar() {
+        Callcar s = new Callcar();
+        s.setDest("abcdefghijklmnop");
+		s.setCur("abcdefghijklmnop");
+        
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooLongCallcar++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTooLongCallcar++++++++++++++++++++++++++++++");
+			System.out.println();
+        }
+    }
+
+	//+++++++++++++++++++++++++++++++++++TestCallcar+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 }
 

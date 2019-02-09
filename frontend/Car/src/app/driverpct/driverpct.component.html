@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">สมัครสมาชิกคนขับรถประเภทรถส่วนบุคคล</mat-toolbar>
+<mat-card> 
+  <div align="center">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="username" [(ngModel)]='username' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="password" [(ngModel)]='password' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ชื่อ-นามสกุล" [(ngModel)]='name' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-select placeholder="เลื่อกเพศ">
+        <mat-option (click)="savegender(user.id)" *ngFor="let user of Gender" [(value)]="user.sex">
+          {{user.sex}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ที่อยู่" [(ngModel)]='address' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ประเภทรถ" [(ngModel)]='vehicletype' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="เบอร์โทรศัพท์" [(ngModel)]='phone' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-select placeholder="เลื่อกจังหวัด">
+        <mat-option (click)="saveprovince(user.id)" *ngFor="let user of Province" [(value)]="user.name">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-select placeholder="เลื่อกอาชีพ">
+        <mat-option (click)="savecareer(user.id)" *ngFor="let user of Career" [(value)]="user.name">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+  
+  
+  <button mat-raised-button color="primary" (click)="save()">บันทึก</button>
+  </div>
+</mat-card>

@@ -9,27 +9,28 @@
   </h2>
   <h4>
     <div align="center">
-      <mat-form-field>
-        <input matInput placeholder="Destination" [(ngModel)]='Dest' [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
+      <form>
+        <mat-form-field>
+          <input matInput #des maxlength="15" placeholder="Destination" [(ngModel)]='Dest' [ngModelOptions]="{standalone: true}">
+          <mat-hint align="end">{{des.value.length}} / 15</mat-hint>
+        </mat-form-field>
+      </form>
     </div>
     <div align="center">
-      <mat-form-field>
-        <input matInput placeholder="Current Location" [(ngModel)]='Cur' [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
+      <form>
+        <mat-form-field>
+          <input matInput #current maxlength="15" placeholder="Current Location" [(ngModel)]='Cur' [ngModelOptions]="{standalone: true}">
+          <mat-hint align="end">{{current.value.length}} / 15</mat-hint>
+        </mat-form-field>
+      </form>
     </div>
 
     <!-- <div align="center">
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="When?" [(ngModel)]='Datepick' [ngModelOptions]="{standalone: true}">
+        <input matInput #datep [matDatepicker]="picker" placeholder="When?" [(ngModel)]='Datepick' [ngModelOptions]="{standalone: true}">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker touchUi disabled="false"></mat-datepicker>
-      </mat-form-field>
-    </div> -->
-
-    <!-- <div align="center" class="width">
-      <mat-form-field>
-        <input matInput placeholder="When? (DD-MM-YYYY)" [(ngModel)]='Datepick' [ngModelOptions]="{standalone: true}">
+        <mat-hint align="end">{{datep.value}}</mat-hint>
       </mat-form-field>
     </div> -->
 
@@ -96,6 +97,9 @@
       </div>
       <div *ngIf="hidedr" align="center">
         Driver unavailable now SORRY
+      </div>
+      <div *ngIf="hideplaceshrt" align="center">
+        Destination or CurrentLoc is at less 10 character!
       </div>
   </h2>
   <br>

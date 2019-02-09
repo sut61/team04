@@ -26,6 +26,7 @@ export class ReservecarComponent implements OnInit {
   hidenull:boolean = false
   hidedate:boolean = false
   hideplace:boolean = false
+  hideplaceshrt:boolean = false
   hidedr:boolean = false
   cartype_id: any
   driver_id: any
@@ -123,6 +124,11 @@ export class ReservecarComponent implements OnInit {
       }.bind(this), 5000);
     }else if(this.Dest === this.Cur){
       this.hideplace = true;
+      setTimeout(function() {
+        this.hideplace = false;
+      }.bind(this), 5000);
+    }else if(this.Dest.length < 10 || this.Cur.length < 10){
+      this.hideplaceshrt = true;
       setTimeout(function() {
         this.hideplace = false;
       }.bind(this), 5000);

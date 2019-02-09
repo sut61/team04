@@ -4,16 +4,16 @@
 <form class="example-form">
   <mat-form-field>
    <mat-select  placeholder="ชื่อพนักงาน"  >
-    <mat-option (click)="savedriver(user.id)" *ngFor="let user of Driver" [(value)]="user.driver">
-      {{user.driver}}
+    <mat-option (click)="savedriver(user.id)" *ngFor="let user of Driver" [(value)]="user.name">
+      {{user.name}}
     </mat-option>
   </mat-select>
 </mat-form-field>
   <br>
   <mat-form-field>
     <mat-select  placeholder="ชื่อลูกค้า"  >
-      <mat-option (click)="savemember(user.id)" *ngFor="let user of Member" [(value)]="user.member">
-        {{user.member}}
+      <mat-option (click)="savemember(user.id)" *ngFor="let user of Member" [(value)]="user.name">
+        {{user.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>

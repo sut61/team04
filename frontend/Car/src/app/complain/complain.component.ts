@@ -43,7 +43,7 @@ export class ComplainComponent implements OnInit {
   }
 
   testSave(){
-    if(this.comment.length>4&&this.comment!=null){
+    if(this.comment!=null){
     if(this.type=="true"){
     console.log(this.ID_Driver)
     console.log(this.MemberLogin.member.id)

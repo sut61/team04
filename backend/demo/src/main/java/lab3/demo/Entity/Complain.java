@@ -30,9 +30,9 @@ public class Complain {
     @ManyToOne
     private DriverTaxi driverTaxi;
 
-     @Size(min =5,max=20 ) @NotNull
+     @Size(min =5,max=20 ) 
     @Pattern(regexp ="[\\w\\s]+")
-    private @NonNull String message;
+    private @NotNull String message;
     
 
 }

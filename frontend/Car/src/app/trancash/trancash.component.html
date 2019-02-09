@@ -1,0 +1,34 @@
+<mat-card>
+  <H1 style="text-align:center;">TAXI Cash Payment Bill</H1><br>
+  <br><br><br>
+
+  <mat-card style="text-align:center;" *ngFor="let user of cashpay">
+   <div >
+    <h4  *ngIf="cashpay[num-1].id == user.id">
+        <p>ชื่อพนักงาน:- {{user.driver.name}}</p>
+        <p>บิล ID:- {{user.id}}</p>
+        <p>หมายเลขรถ:- {{user.driver.carType.name}}</p>
+       <p *ngIf="user.member != null">ชื่อลูกค้า:- {{user.member.name}}</p>
+       <p>ระยะทาง:- {{user.distance}}</p>
+       <p>ระยะทาง:- {{user.distance*3}}</p>
+       <p>เงินที่จ่าย:- {{user.moneypay}}</p>
+       <p>เงินทอน:- {{user.change}}</p>
+       <p *ngIf="user.gift != null">ของแถมที่เลือก:- {{user.gift.name}}</p>
+    
+    </h4></div>
+    </mat-card>
+
+    
+
+    <H3 style="text-align:center;">ขอบคุณ<br>&nbsp;&nbsp;Thank You</H3>
+    
+   
+  <h5 style="text-align:center;">
+      <input type="button" value="Print" onClick="window.print()"><br><br>
+    </h5>
+  
+
+<br><br>
+<h3 align="center"> <input type="button" [routerLink]="['/cashpay']"
+   routerLinkActive="cashpay" value="ย้อนกลับ" ></h3>
+  </mat-card>

@@ -29,6 +29,10 @@ export class CashpayService {
     return this.http.get(this.API + '/Gift/');
   }
 
+  getCashpay(): Observable<any> {
+    return this.http.get(this.API + '/cashpay/');
+  }
+
  
 }
 

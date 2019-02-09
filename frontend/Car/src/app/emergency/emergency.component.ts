@@ -62,7 +62,7 @@ export class EmergencyComponent implements OnInit {
     this.cause_id = cause_id;
   }
 
-  savepricetype(pricetype_id){
+  savepriceType(pricetype_id){
     console.log(pricetype_id);
     this.pricetype_id = pricetype_id;
   }

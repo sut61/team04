@@ -29,6 +29,7 @@ import { CommentDescriptionComponent } from './comment-description/comment-descr
 import { SavefinishComponent } from './savefinish/savefinish.component';
 import { LoginDriverComponent } from './login-driver/login-driver.component';
 import { MenudriverComponent } from './menudriver/menudriver.component';
+import { TrancashComponent } from './trancash/trancash.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
   { path: 'savefinish', component: SavefinishComponent },
   { path: 'login-driver', component: LoginDriverComponent },
   { path: 'menudriver', component: MenudriverComponent },
+  { path: 'trancash', component: TrancashComponent },
 ];
 
 @NgModule({
@@ -70,7 +72,7 @@ const appRoutes: Routes = [
     ComplainDescriptionComponent,
     EmergencyComponent,
     CashpayComponent,
-
+    TrancashComponent,
     DiscountComponent,
     ComplainDescriptionComponent,
     ReservecarComponent,

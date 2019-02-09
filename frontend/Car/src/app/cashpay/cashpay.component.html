@@ -4,13 +4,21 @@
   
   <h2 style="text-align:center" color="primary"><b>ชำระเงินค่าโดยสาร</b></h2>
   <br>
+  <mat-form-field class="example-full-width">
     
-    ชื่อผู้ขับขี่รถ : {{Driver.name}}
-    <br><br>
+     <input matInput placeholder="กรอกชื่อคนขับ" [(ngModel)]='dnam'  [ngModelOptions]="{standalone: true}">
+      </mat-form-field><br>
+     <h4 style="text-align:center"><button class="btnn" (click)="setShow2()">ตรวจสอบรายชื่อ</button></h4>
+          <div *ngIf="isShow5">
+              
+              
+              ชื่อผู้ขับขี่รถ : {{Driver.name}}
+              <br><br>
     
-    รถที่ใช้ในการเดินทาง : {{Driver.carType.name}}
-  
-    <br><br>
+               รถที่ใช้ในการเดินทาง : {{Driver.carType.name}}
+               <br><br>
+          
+    
   
     <mat-form-field class="example-full-width">
       <input matInput placeholder="กรอกระยะทาง (Km.)" [(ngModel)]='dis' [(ngModel)]='distance' [ngModelOptions]="{standalone: true}">
@@ -67,7 +75,7 @@
             <input type="button" onclick="window.location='trancash' "  value="ดูใบเสร็จ">
         </div>
         
-
+          </div>
  
   </div>
       </mat-card><br>

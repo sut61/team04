@@ -2,6 +2,9 @@ package lab3.demo.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity
@@ -25,8 +28,12 @@ public class Emergency {
     @ManyToOne
     private Member member;
 
-    String position;
-    String phone;
+    @Size(min=10 , max=50)
+    @NotNull String position;
+
+    @Size (min=10 , max=10)
+    @Pattern(regexp = "0[89]\\d+]")
+    @NotNull String phone;
 
 
 

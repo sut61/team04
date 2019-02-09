@@ -77,7 +77,7 @@ export class OnlinepayComponent implements OnInit {
   }
 
   save(){
-    if(this.distance!=null && this.moneypay!=null && this.Member.id!=null && this.bank_id.id!=null){
+    if(this.distance!=null && this.moneypay!=null){
     console.log("in save");
     console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.Member.id+'is member');console.log(this.driver_id.id+'is iD');console.log(this.bank_id.id+'Ba ID');
 

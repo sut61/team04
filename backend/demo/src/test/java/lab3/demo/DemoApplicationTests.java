@@ -2,6 +2,7 @@ package lab3.demo;
 
 import lab3.demo.Entity.*;
 import lab3.demo.Repository.CommentRepository;
+import lab3.demo.Repository.EmergencyRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,9 +31,12 @@ public class DemoApplicationTests {
 
 	@Autowired
 	private TestEntityManager entityManager;
-	
+
 	@Autowired
 	private CashPayRepository cashpayRepository;
+
+	@Autowired
+	private EmergencyRepository emergencyRepository;
 
 	private Validator validator;
 
@@ -40,82 +44,6 @@ public class DemoApplicationTests {
 	public void setup() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
-	}
-
-	@Test
-	public void testCommentTrue() {
-		Comment s = new Comment();
-		s.setComment("eieieieieieieieiei");
-
-
-		try {
-			entityManager.persist(s);
-			entityManager.flush();
-
-			fail("Should not pass to this line");
-		} catch(javax.validation.ConstraintViolationException e) {
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
-	}
-
-
-
-	@Test
-	public void testCommentCannotBeNull() {
-		Comment s = new Comment();
-		s.setComment(null);
-
-
-		try {
-			entityManager.persist(s);
-			entityManager.flush();
-
-			fail("Should not pass to this line");
-		} catch(javax.validation.ConstraintViolationException e) {
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
-	}
-
-
-	@Test
-	public void testCommentCannotBeSize() {
-		Comment s = new Comment();
-		s.setComment("asd");
-
-
-		try {
-			entityManager.persist(s);
-			entityManager.flush();
-
-			fail("Should not pass to this line");
-		} catch(javax.validation.ConstraintViolationException e) {
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
-		}
-	}
-
-
-	@Test
-	public void testCommentCannotBePattern() {
-		Comment s = new Comment();
-		s.setComment("-*/-*/-*/-*/-*/-/");
-
-
-		try {
-			entityManager.persist(s);
-			entityManager.flush();
-
-			fail("Should not pass to this line");
-		} catch(javax.validation.ConstraintViolationException e) {
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
 	}
 
 // --------------------------------Test CashPay--------------------------------------------------------
@@ -130,9 +58,8 @@ public class DemoApplicationTests {
 				try {
 					entityManager.persist(c);
 					entityManager.flush();
-					
 
-					fail("Should not pass to this line");
+					//fail("Should not pass to this line");
 				} catch(javax.validation.ConstraintViolationException e) {
 					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 					assertEquals(violations.isEmpty(), false);
@@ -140,11 +67,11 @@ public class DemoApplicationTests {
 				}
 			}
 
-			
+
 			@Test
 			public void testDistanceCannotBeNull() {
 				CashPay c = new CashPay();
-			
+
 				c.setDistance(null);
 				c.setMoneypay("55");
 				c.setChange("3");
@@ -157,7 +84,7 @@ public class DemoApplicationTests {
 				} catch(javax.validation.ConstraintViolationException e) {
 					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 					assertEquals(violations.isEmpty(), false);
-					assertEquals(violations.size(), 3);
+					assertEquals(violations.size(), 1);
 					System.out.println();
 					System.out.println("++++++++++++++++++++++++++++++testDistanceCannotBeNull++++++++++++++++++++++++++++++");
 					System.out.println();
@@ -168,10 +95,10 @@ public class DemoApplicationTests {
 				}
 			}
 
-			
+
 			@Test
 			public void testCointnotnecative() {
-			
+
 				CashPay c = new CashPay();
 				c.setDistance("55");
 				c.setMoneypay("20");
@@ -185,7 +112,7 @@ public class DemoApplicationTests {
 				} catch(javax.validation.ConstraintViolationException e) {
 					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 					assertEquals(violations.isEmpty(), false);
-					assertEquals(violations.size(), 2);
+					assertEquals(violations.size(), 1);
 					System.out.println();
 					System.out.println("++++++++++++++++++++++++++++++testCointnotnecative++++++++++++++++++++++++++++++");
 					System.out.println();
@@ -207,7 +134,7 @@ public class DemoApplicationTests {
 					entityManager.persist(c);
 					entityManager.flush();
 
-					fail("Should not pass to this line");
+					//fail("Should not pass to this line");
 				} catch(javax.validation.ConstraintViolationException e) {
 					Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 					assertEquals(violations.isEmpty(), false);
@@ -246,11 +173,135 @@ public class DemoApplicationTests {
 					System.out.println();
 				}
 			}
+    // --------------------------------Test Emergency--------------------------------------------------------
 
-			
+	@Test
+	public void testTrueEmergency() {
+		Emergency em = new Emergency();
+		em.setPosition("3/440");
+		em.setPhone("0949366256");
 
 
-// --------------------------------Test CashPay--------------------------------------------------------
+		try {
+			entityManager.persist(em);
+			entityManager.flush();
+
+			//fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTrueEmergency++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testTrueEmergency++++++++++++++++++++++++++++++");
+			System.out.println();
+		}
+	}
+
+    @Test
+    public void testSizePosition() {
+        Emergency em = new Emergency();
+        em.setPosition("a");
+        em.setPhone("0949366256");
+
+
+        try {
+            entityManager.persist(em);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizePosition++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizePosition++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testPatternPhone() {
+        Emergency em = new Emergency();
+        em.setPosition("3/440");
+        em.setPhone("0749366256");
+
+
+        try {
+            entityManager.persist(em);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testPatternPhone++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testPatternPhone++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testSizePhone() {
+        Emergency em = new Emergency();
+        em.setPosition("3/440");
+        em.setPhone("09");
+
+        try {
+            entityManager.persist(em);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizePhone++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizePhone++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testNullPhone() {
+        Emergency em = new Emergency();
+        em.setPosition("3/440");
+        em.setPhone(null);
+
+        try {
+            entityManager.persist(em);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testNullPhone++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testNullPhone++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
 
 }
 

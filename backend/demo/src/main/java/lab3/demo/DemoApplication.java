@@ -88,18 +88,19 @@ public class DemoApplication {
 			bankrepository.findAll().forEach(System.out::println);
 
 			Stream.of("รถยางรั่ว", "เกิดอุบัติเหตุ", "น้ำมันหมด", "ไม่ทราบสาเหตุ", "อื่นๆ"
-					).forEach(name -> {
-				PriceType priceType = new PriceType();
-				priceType.setPriceType(name);
-				priceTypeRepository.save(priceType);
+					).forEach(causetype -> {
+				Cause cause = new Cause();
+				cause.setCauseType(causetype);
+				causeRepository.save(cause);
+
 			});
 			priceTypeRepository.findAll().forEach(System.out::println);
 
 			Stream.of("ราคา 200 บาท รถจักรยานยนต์", "ราคา 500 บาท รถ ECO-Car", "ราคา 700 บาท รถ Compact Car", "ราคา 1000 บาท รถ Mid-Size Car", "ราคา 1500 บาท รถ Full-Size Car"
-			).forEach(causetype -> {
-				Cause cause = new Cause();
-				cause.setCauseType(causetype);
-				causeRepository.save(cause);
+			).forEach(name -> {
+				PriceType priceType = new PriceType();
+				priceType.setPriceType(name);
+				priceTypeRepository.save(priceType);
 			});
 			causeRepository.findAll().forEach(System.out::println);
 

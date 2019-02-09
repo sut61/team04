@@ -14,7 +14,7 @@ export class EmergencyService {
     return this.http.get(this.API + '/driver/');
   }
   getMember(): Observable<any> {
-    return this.http.get(this.API + '/member/');
+    return this.http.get(this.API + '/Member/');
   }
   getCause(): Observable<any> {
     return this.http.get(this.API + '/cause/');

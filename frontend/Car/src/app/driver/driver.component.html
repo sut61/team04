@@ -41,6 +41,14 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="username" [(ngModel)]='username' [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="password" [(ngModel)]='password' [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
 </form>
 <button mat-raised-button color="primary" (click)="save()">บันทึก</button>
 <button mat-raised-button color="primary" onclick="window.location='login'">ยกเลิก</button>

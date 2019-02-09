@@ -1,6 +1,10 @@
 <mat-toolbar>สมัครคนขับ</mat-toolbar>
 <mat-card>
   <div align="center">
+      <div *ngIf="dr">
+          กรุณากรอกมูลให้ครบ
+          <br><br>
+        </div>
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <input matInput placeholder="ชื่อ-นามสกุล" [(ngModel)]='name' [ngModelOptions]="{standalone: true}">

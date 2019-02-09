@@ -19,6 +19,7 @@ export class CashpayComponent implements OnInit {
 
   member_id : any
   driver_id : any
+  driver_name : any
   distance : any
   moneypay : any
   gift_id : any
@@ -28,9 +29,13 @@ export class CashpayComponent implements OnInit {
   dis : any
   mon : any
   tel : any
+  dnam : any
 
   isShow3:boolean = false;
   isShow4:boolean = false;
+  isShow5:boolean = false;
+
+
       setShow(){
         if(this.isShow3 == true ){
           this.isShow3 = false; 
@@ -40,6 +45,19 @@ export class CashpayComponent implements OnInit {
         else{
           alert("ไม่ได้เป็นสมาชิก")
           this.isShow4 = true;
+        
+        }
+     
+      }
+
+      setShow2(){
+        if(this.isShow5 == true ){
+          this.isShow5 = false; 
+        }else if(this.dnam==this.Driver.name){
+          this.isShow5 = true;
+        }
+        else{
+          alert("ไม่ได้เป็นสมาชิก")
         
         }
      
@@ -80,9 +98,9 @@ export class CashpayComponent implements OnInit {
     //this.Distance = this.dis
     //this.Money = this.mon
     console.log("in save");
-    console.log(this.Driver.id+'is iD');console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');console.log(this.Member.member.id+'is member');console.log(this.gift_id+'gift ID');
+    console.log(this.Driver.id+'is iD');console.log(this.Driver.name+'is Dname');console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');console.log(this.Member.member.id+'is member');console.log(this.gift_id+'gift ID');
 
-    this.httpClient.post('http://localhost:8080/CashPay/'+this.Driver.id+'/'+this.distance+'/'+this.moneypay+'/'+this.change+'/'+this.Member.member.id+'/'+this.gift_id,this.cashpay)
+    this.httpClient.post('http://localhost:8080/CashPay/'+this.Driver.id+'/'+this.Driver.name+'/'+this.distance+'/'+this.moneypay+'/'+this.change+'/'+this.Member.member.id+'/'+this.gift_id,this.cashpay)
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")
@@ -95,9 +113,9 @@ export class CashpayComponent implements OnInit {
       this.change = a
     
       console.log("in save2");
-      console.log(this.Driver.id+'is iD');console.log(this.distance+'is distance');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');
+      console.log(this.Driver.id+'is iD');console.log(this.Driver.name+'is Dname');console.log(this.distance+'is distance');console.log(this.moneypay+'ismoney');console.log(this.change+'is change');
 
-      this.httpClient.post('http://localhost:8080/CashPay2/'+this.Driver.id+'/'+this.distance+'/'+this.moneypay+'/'+this.change,this.cashpay)
+      this.httpClient.post('http://localhost:8080/CashPay2/'+this.Driver.id+'/'+this.Driver.name+'/'+this.distance+'/'+this.moneypay+'/'+this.change,this.cashpay)
       .subscribe(
         data => {
           alert("บันทึกสำเร็จ")
@@ -113,6 +131,11 @@ export class CashpayComponent implements OnInit {
   savedriver(driver_id){
     console.log(driver_id);
     this.driver_id = driver_id;
+  }
+
+  savedrivern(driver_name){
+    console.log(driver_name);
+    this.driver_name = driver_name;
   }
 
   savedistance(distance){

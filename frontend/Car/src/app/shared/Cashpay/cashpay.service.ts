@@ -22,7 +22,9 @@ export class CashpayService {
   // getMoney(): Observable<any> {
   //   return this.http.get(this.API + '/Money/');
   // }
-
+  getMember(): Observable<any> {
+    return this.http.get(this.API + '/Member/');
+  }
   getGift(): Observable<any> {
     return this.http.get(this.API + '/Gift/');
   }

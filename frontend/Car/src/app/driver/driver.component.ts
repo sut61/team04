@@ -62,6 +62,7 @@ export class DriverComponent implements OnInit {
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")
+        this.router.navigate(['savefinish'])
        }
      );
   }

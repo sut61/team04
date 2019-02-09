@@ -26,5 +26,9 @@ export class ComentService {
     return this.http.get(this.API + '/loginmember/');
   }
 
+  getComment(): Observable<any> {
+    return this.http.get(this.API + '/Comment/');
+  }
+
 
 }

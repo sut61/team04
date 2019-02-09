@@ -19,6 +19,9 @@ export class CallcarComponent implements OnInit {
   Cur: any
   cartype_id: any
   driver_id: any
+  hidenull:boolean = false
+  hideplace:boolean = false
+  hideplaceshrt:boolean = false
 
   callcar: any
 
@@ -51,7 +54,34 @@ export class CallcarComponent implements OnInit {
     this.driver_id = driver_id;
   }
 
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
   save(){
+
+    if (this.Dest == null || this.Cur == null || this.cartype_id == null || this.driver_id == null){
+      this.hidenull = true;
+      setTimeout(function() {
+        this.hidenull = false;
+      }.bind(this), 5000);
+    }else if(this.Dest === this.Cur){
+      this.hideplace = true;
+      setTimeout(function() {
+        this.hideplace = false;
+      }.bind(this), 5000);
+    }else if(this.Dest.length < 10 || this.Cur.length < 10){
+      this.hideplaceshrt = true;
+      setTimeout(function() {
+        this.hideplace = false;
+      }.bind(this), 5000);
+    }
+
     console.log("saved");
     this.httpClient.post('http://localhost:8080/Callcar/'+this.Dest+'/'+this.Cur+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember.member.id,this.callcar)
     .subscribe(

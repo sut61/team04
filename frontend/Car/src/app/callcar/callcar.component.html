@@ -10,12 +10,12 @@
   <h4>
     <div align="center">
       <mat-form-field>
-        <input matInput placeholder="Destination" [(ngModel)]='Dest' [ngModelOptions]="{standalone: true}">
+        <input matInput maxlength="15" placeholder="Destination" [(ngModel)]='Dest' [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </div>
     <div align="center">
       <mat-form-field>
-        <input matInput placeholder="Current Location" [(ngModel)]='Cur' [ngModelOptions]="{standalone: true}">
+        <input matInput maxlength="15" placeholder="Current Location" [(ngModel)]='Cur' [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </div>
     <div align="center">
@@ -37,6 +37,17 @@
       </mat-form-field>
     </div>
   </h4>
+  <h2>
+      <div *ngIf="hidenull" align="center">
+          Please Fill in the Blanks!
+      </div>
+      <div *ngIf="hideplace" align="center">
+          Destination cannot be same place as where you are!
+      </div>
+      <div *ngIf="hideplaceshrt" align="center">
+          Destination or CurrentLoc is at less 10 character!
+      </div>
+  </h2>
   <br>
   <mat-divider></mat-divider>
   <h4>

@@ -72,7 +72,7 @@ export class EmergencyComponent implements OnInit {
     this.httpClient.post('http://localhost:8080/Emergency/'+this.position+'/'+this.phone+'/'+this.cause_id+'/'+this.member_id+'/'+this.driver_id+'/'+this.pricetype_id,this.emergency)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
+        //alert("บันทึกสำเร็จ")
         this.router.navigate(['savefinish'])
        }
      );

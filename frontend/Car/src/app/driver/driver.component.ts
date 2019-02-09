@@ -63,7 +63,7 @@ export class DriverComponent implements OnInit {
     this.httpClient.post('http://localhost:8080/Driver/'+this.gender_id1+'/'+this.province_id1+'/'+this.cartype_id1+'/'+this.name+'/'+this.tel+'/'+this.address+'/'+this.email+'/'+this.username+'/'+this.password,this.driver)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
+        //alert("บันทึกสำเร็จ")
         this.router.navigate(['savefinish'])
        }
        

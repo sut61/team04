@@ -50,7 +50,7 @@ public Collection<Emergency> emergency(){
     return emergencyRepository.findAll().stream().collect(Collectors.toList());
 }
 
-@PostMapping(path = "Emergency/{position}/{phone}/{id_cause}/{id_member}/{id-driver}/{id_priceType}")
+@PostMapping(path = "Emergency/{position}/{phone}/{id_cause}/{id_member}/{id_driver}/{id_priceType}")
 public Emergency Emergency(
                      @PathVariable String position,
                      @PathVariable String phone,

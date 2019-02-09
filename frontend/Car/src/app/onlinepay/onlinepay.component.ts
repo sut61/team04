@@ -25,10 +25,12 @@ export class OnlinepayComponent implements OnInit {
   moneypay : Number
   onlinepay : any
 
+
   
 
   isShow:boolean = false;
   isShow2:boolean = false;
+  message:boolean = false;
 
       setShow(){
         if(this.isShow == true){
@@ -75,15 +77,19 @@ export class OnlinepayComponent implements OnInit {
   }
 
   save(){
+    if(this.distance!=null && this.moneypay!=null && this.Member.id!=null && this.bank_id.id!=null){
     console.log("in save");
     console.log(this.distance+'is distande');console.log(this.moneypay+'ismoney');console.log(this.Member.id+'is member');console.log(this.driver_id.id+'is iD');console.log(this.bank_id.id+'Ba ID');
 
     this.httpClient.post('http://localhost:8080/OnlinePay/'+this.distance+'/'+this.moneypay+'/'+this.Member.member.id+'/'+this.driver_id+'/'+this.bank_id,this.onlinepay)
     .subscribe(
       data => {
-        alert("บันทึกสำเร็จ")
+        // alert("บันทึกสำเร็จ")
        }
      );
+    }else{
+      this.message=true
+    }
   }
 
   savemember(member_id){

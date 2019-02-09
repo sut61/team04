@@ -73,6 +73,7 @@ export class EmergencyComponent implements OnInit {
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")
+        this.router.navigate(['savefinish'])
        }
      );
   }

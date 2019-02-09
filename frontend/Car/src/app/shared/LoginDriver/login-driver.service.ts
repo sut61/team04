@@ -13,6 +13,4 @@ export class LoginDriverService {
   getDriver(): Observable<any> {
     return this.http.get(this.API + '/Driver/');
   }
-
-  
 }

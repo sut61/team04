@@ -760,6 +760,175 @@ public class DemoApplicationTests {
     }
 
 	//+++++++++++++++++++++++++++++++++++TestCallcar+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// --------------------------------Test Driver--------------------------------------------------------
+    @Test
+    public void testTrueDriver() {
+        Driver d = new Driver();
+        d.setName("Anuttapon");
+        d.setTel("0949366256");
+        d.setAddress("3440000000000000");
+        d.setEmail("Anuttapon@dsdsds.com");
 
+
+        try {
+            entityManager.persist(d);
+            entityManager.flush();
+
+            //fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testTrueDriver++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testTrueDriver++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testPatternName() {
+        Driver d = new Driver();
+        d.setName("********");
+        d.setTel("0949366256");
+        d.setAddress("3440000000000000");
+        d.setEmail("Anuttapon@dsdsds.com");
+
+
+        try {
+            entityManager.persist(d);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testPatternName++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testPatternName++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testSizeTel() {
+        Driver d = new Driver();
+        d.setName("Anuttapon");
+        d.setTel("094936625666");
+        d.setAddress("3440000000000000");
+        d.setEmail("Anuttapon@dsdsds.com");
+
+
+        try {
+            entityManager.persist(d);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizeTel++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizeTel++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testSizeAddress() {
+        Driver d = new Driver();
+        d.setName("Anuttapon");
+        d.setTel("0949366256");
+        d.setAddress("a");
+        d.setEmail("Anuttapon@dsdsds.com");
+
+
+        try {
+            entityManager.persist(d);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizeAddress++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testSizeAddress++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+
+    @Test
+    public void testPatternEmail() {
+        Driver d = new Driver();
+        d.setName("Anuttapon");
+        d.setTel("0949366256");
+        d.setAddress("3440000000000000");
+        d.setEmail("Anuttapondsdsds");
+
+
+        try {
+            entityManager.persist(d);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testPatternEmail++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testPatternEmail++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void testNullName() {
+        Driver d = new Driver();
+        d.setName(null);
+        d.setTel("0949366256");
+        d.setAddress("3440000000000000");
+        d.setEmail("Anuttapon@dsdsds.com");
+
+
+        try {
+            entityManager.persist(d);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 2);
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testNullName++++++++++++++++++++++++++++++");
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("++++++++++++++++++++++++++++++testNullName++++++++++++++++++++++++++++++");
+            System.out.println();
+        }
+    }
+    // --------------------------------Test Driver--------------------------------------------------------
 }
 

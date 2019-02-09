@@ -1,8 +1,7 @@
 package lab3.demo;
 
 import lab3.demo.Entity.*;
-import lab3.demo.Repository.CommentRepository;
-import lab3.demo.Repository.EmergencyRepository;
+import lab3.demo.Repository.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
-import lab3.demo.Repository.CashPayRepository;
-import lab3.demo.Repository.ReservecarRepository;
+
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -29,6 +27,9 @@ import static org.junit.Assert.assertEquals;
 public class DemoApplicationTests {
 	@Autowired
 	private CommentRepository  commentRepository;
+
+	@Autowired
+	private ComplainRepository  complainRepository;
 
 	@Autowired
 	private TestEntityManager entityManager;
@@ -443,5 +444,220 @@ public class DemoApplicationTests {
     }
 
 	// --------------------------------Test Reservecar--------------------------------------------------------
+
+	// =================================moss Thirawuth=========================================================
+
+	//+++++++++++++++++++++++++++++++++++Comment+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	@Test
+    public void testCommentTrue() {
+        Comment s = new Comment();
+        s.setComment("Very Good");
+		s.setNameDriver("Hassad");
+		s.setNameMamber("moss thirawuth");
+        s.setPhoneDriver("0812345678");
+        s.setPhoneMamber("0912345678");
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Comment is True %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            //fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+			
+		}
+	}
+	
+
+	@Test
+    public void testCommentCannotSize() {
+        Comment s = new Comment();
+        s.setComment("Very");
+		s.setNameDriver("asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd");
+		s.setNameMamber("asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd");
+        s.setPhoneDriver("08123456780");
+        s.setPhoneMamber("09123456780");
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 5);
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testCommentNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testCommentNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			
+		}
+	}
+
+	@Test
+    public void testCommentCannotPattern() {
+        Comment s = new Comment();
+        s.setComment("/*-789-/");
+		s.setNameDriver("/*-89");
+		s.setNameMamber("/*896");
+        s.setPhoneDriver("0512345678");
+        s.setPhoneMamber("0512345678");
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 5);
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testCommentNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testCommentNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			
+		}
+	}
+
+	@Test
+    public void testCommentCannotNull() {
+        Comment s = new Comment();
+        s.setComment(null);
+		s.setNameDriver(null);
+		s.setNameMamber(null);
+        s.setPhoneDriver(null);
+        s.setPhoneMamber(null);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 5);
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testCommentNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testCommentNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			
+		}
+	}
+	
+		//+++++++++++++++++++++++++++++++++++Comment+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		//+++++++++++++++++++++++++++++++++++Complain+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		@Test
+		public void testComplainTrue() {
+			Complain s = new Complain();
+			s.setMessage("Very Good");
+			
+			try {
+				entityManager.persist(s);
+				entityManager.flush();
+				System.out.println("************************************************* Complain is True *************************************************");
+				//fail("Should not pass to this line");
+			} catch(javax.validation.ConstraintViolationException e) {
+				Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+				assertEquals(violations.isEmpty(), false);
+				assertEquals(violations.size(), 1);
+				
+			}
+		}
+
+		@Test
+		public void testComplainCannotSize() {
+			Complain s = new Complain();
+			s.setMessage("Very");
+			
+			try {
+				entityManager.persist(s);
+				entityManager.flush();
+				
+				fail("Should not pass to this line");
+			} catch(javax.validation.ConstraintViolationException e) {
+				Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+				assertEquals(violations.isEmpty(), false);
+				assertEquals(violations.size(), 1);
+				System.out.println();
+			System.out.println("************************************************* testComplainCannotSize *************************************************");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("************************************************* testComplainCannotSize *************************************************");
+			System.out.println();
+				
+			}
+		}
+
+		@Test
+		public void testComplainCannotPattern() {
+			Complain s = new Complain();
+			s.setMessage("/*/-+++-*");
+			
+			try {
+				entityManager.persist(s);
+				entityManager.flush();
+				
+				fail("Should not pass to this line");
+			} catch(javax.validation.ConstraintViolationException e) {
+				Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+				assertEquals(violations.isEmpty(), false);
+				assertEquals(violations.size(), 1);
+				System.out.println();
+			System.out.println("************************************************* testComplainCannotPattern *************************************************");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("************************************************* testComplainCannotPattern *************************************************");
+			System.out.println();
+				
+			}
+		}
+
+		@Test
+		public void testComplainCannotNull() {
+			Complain s = new Complain();
+			s.setMessage(null);
+			
+			try {
+				entityManager.persist(s);
+				entityManager.flush();
+				
+				fail("Should not pass to this line");
+			} catch(javax.validation.ConstraintViolationException e) {
+				Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+				assertEquals(violations.isEmpty(), false);
+				assertEquals(violations.size(), 1);
+				System.out.println();
+			System.out.println("************************************************* testComplainCannotNull *************************************************");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("************************************************* testComplainCannotNull *************************************************");
+			System.out.println();
+				
+			}
+		}
+		
+		//+++++++++++++++++++++++++++++++++++Complain+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+			// =================================moss Thirawuth=========================================================
+
+
 }
 

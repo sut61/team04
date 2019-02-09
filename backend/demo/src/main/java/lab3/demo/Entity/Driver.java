@@ -30,7 +30,7 @@ public class Driver {
     private @NotNull String name;
 
     @Size(min=10 , max=10)
-    @Pattern(regexp = "0[89]\\d+]")
+    @Pattern(regexp = "0[89]\\d+")
     private @NotNull String tel;
 
     @Size(min=10 , max=50)
@@ -38,6 +38,9 @@ public class Driver {
 
     @Pattern(regexp ="[\\w\\s]+@[\\w\\s]+[\\.]com")
     private @NotNull String email;
+
+    String username;
+    String password;
 
 
 }

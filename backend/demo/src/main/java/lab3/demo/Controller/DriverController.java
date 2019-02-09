@@ -42,14 +42,14 @@ public class DriverController {
     }
 
     @GetMapping("province")
-    public Collection<Province> province(){ return provinceRepository.findAll().stream().collect(Collectors.toList());
-    }
+    public Collection<Province> province(){ return provinceRepository.findAll().stream().collect(Collectors.toList());}
 
     @GetMapping("gender")
     public Collection<Gender> genders(){
         return genderRepository.findAll().stream().collect(Collectors.toList());
     }
-    @PostMapping("/Driver/{id_gender}/{id_province}/{id_cartype}/{name}/{tel}/{address}/{email}")
+
+    @PostMapping("/Driver/{id_gender}/{id_province}/{id_cartype}/{name}/{tel}/{address}/{email}/{username}/password")
     public Driver Driver(
             @PathVariable Long id_gender,
             @PathVariable Long id_province,
@@ -57,7 +57,9 @@ public class DriverController {
             @PathVariable String name,
             @PathVariable String tel,
             @PathVariable String address,
-            @PathVariable String email){
+            @PathVariable String email,
+            @PathVariable String username,
+            @PathVariable String password){
 
 
 
@@ -73,6 +75,8 @@ public class DriverController {
         driver.setTel(tel);
         driver.setAddress(address);
         driver.setEmail(email);
+        driver.setUsername(username);
+        driver.setPassword(password);
 
 
         return driverRepository.save(driver);

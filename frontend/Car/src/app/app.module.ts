@@ -25,6 +25,7 @@ import { DiscountComponent } from './discount/discount.component';
 import { CashpayComponent } from './cashpay/cashpay.component';
 import { ReservecarComponent } from './reservecar/reservecar.component';
 import { ReservesumComponent } from './reservesum/reservesum.component';
+import { CommentDescriptionComponent } from './comment-description/comment-description.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
   { path: 'complaindescription', component: ComplainDescriptionComponent },
   { path: '', redirectTo: 'login-member', pathMatch: 'full' },
   { path: 'emergency', component: EmergencyComponent },
+  { path: 'CommentDescription', component: CommentDescriptionComponent },
 ];
 
 @NgModule({
@@ -66,7 +68,8 @@ const appRoutes: Routes = [
     DiscountComponent,
     ComplainDescriptionComponent,
     ReservecarComponent,
-    ReservesumComponent
+    ReservesumComponent,
+    CommentDescriptionComponent
   ],
   imports: [
     BrowserModule,

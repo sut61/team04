@@ -49,7 +49,7 @@ public class DriverController {
         return genderRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/Driver/{id_gender}/{id_province}/{id_cartype}/{name}/{tel}/{address}/{email}/{username}/password")
+    @PostMapping("/Driver/{id_gender}/{id_province}/{id_cartype}/{name}/{tel}/{address}/{email}/{username}/{password}")
     public Driver Driver(
             @PathVariable Long id_gender,
             @PathVariable Long id_province,

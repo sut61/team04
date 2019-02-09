@@ -28,6 +28,7 @@ import { ReservesumComponent } from './reservesum/reservesum.component';
 import { CommentDescriptionComponent } from './comment-description/comment-description.component';
 import { SavefinishComponent } from './savefinish/savefinish.component';
 import { LoginDriverComponent } from './login-driver/login-driver.component';
+import { MenudriverComponent } from './menudriver/menudriver.component';
 
 const appRoutes: Routes = [
   { path: 'Comment', component: CommentComponent },
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
   { path: 'CommentDescription', component: CommentDescriptionComponent },
   { path: 'savefinish', component: SavefinishComponent },
   { path: 'login-driver', component: LoginDriverComponent },
+  { path: 'menudriver', component: MenudriverComponent },
 ];
 
 @NgModule({
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
     ReservesumComponent,
     CommentDescriptionComponent,
     SavefinishComponent,
-    LoginDriverComponent
+    LoginDriverComponent,
+    MenudriverComponent
   ],
   imports: [
     BrowserModule,

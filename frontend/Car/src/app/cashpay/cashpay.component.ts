@@ -52,6 +52,7 @@ export class CashpayComponent implements OnInit {
       }
 
       setShow2(){
+        
         if(this.isShow5 == true ){
           this.isShow5 = false; 
         }else if(this.dnam==this.Driver.name){

@@ -16,6 +16,7 @@ export class CashpayComponent implements OnInit {
   Driver: any
   Money: Array<any>
   Gift : Array<any>
+  Member1: Array<any>
 
   member_id : any
   driver_id : any
@@ -38,16 +39,45 @@ export class CashpayComponent implements OnInit {
 
 
       setShow(){
-        if(this.isShow3 == true ){
+        for(var i = 0;i<this.Member1.length;i++){
+          
+          console.log(this.Member1[i].phone);
+          
+          if(this.tel==this.Member1[i].phone){
+            this.isShow3 = true;
+            this.Member=this.Member1[i];
+            console.log(this.Member.name);
+
+            var i = this.Member1.length;
+          }else if((i == this.Member1.length) && this.tel != this.Member1[i].phone){
+            this.isShow4 = true;
+          }
+        /* else if(this.isShow3 == true ){
           this.isShow3 = false; 
-        }else if(this.tel==this.Member.phone){
-          this.isShow3 = true;
-        }
+        } 
         else{
           // alert("ไม่ได้เป็นสมาชิก")
           this.isShow4 = true;
+
         
+        } */
+          
+          //console.log(this.Member1[i].phone);
         }
+          
+
+
+
+        // if(this.isShow3 == true ){
+        //   this.isShow3 = false; 
+        // }else if(this.tel==this.Member.phone){
+        //   this.isShow3 = true;
+        // }
+        // else{
+        //   // alert("ไม่ได้เป็นสมาชิก")
+        //   this.isShow4 = true;
+        
+        // }
      
       }
 
@@ -73,13 +103,16 @@ export class CashpayComponent implements OnInit {
 
     this.cashpayService.getMember().subscribe(data => {
       this.Member = data[0];
+      this.Member1 = data;     
+      // this.Member = data[1];
+      // this.Member = data[2];
+
       console.log(this.Member);
     });
     this.cashpayService.getLoginDriver().subscribe(data => {
       this.Driver = data[0];
       console.log(this.Driver);
     });
-
 
     this.cashpayService.getDriver().subscribe(data => {
       this.Driver = data[0];

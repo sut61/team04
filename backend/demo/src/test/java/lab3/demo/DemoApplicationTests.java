@@ -549,7 +549,7 @@ public class DemoApplicationTests {
 		} catch(javax.validation.ConstraintViolationException e) {
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 2);
+			assertEquals(violations.size(), 1);
 			System.out.println();
 			System.out.println("++++++++++++++++++++++++++++++testTrueEmergency++++++++++++++++++++++++++++++");
 			System.out.println();
@@ -575,7 +575,7 @@ public class DemoApplicationTests {
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 2);
+            assertEquals(violations.size(), 1);
             System.out.println();
             System.out.println("++++++++++++++++++++++++++++++testSizePosition++++++++++++++++++++++++++++++");
             System.out.println();

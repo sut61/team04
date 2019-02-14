@@ -46,6 +46,11 @@ public class DemoApplicationTests {
 	@Autowired
     private CallcarRepository carcarRepository;
 
+    @Autowired
+    private SalaryRepository salaryRepository;
+
+    @Autowired
+    private DiscountRepository discountRepository;
 
 	private Validator validator;
 
@@ -1279,6 +1284,222 @@ public class DemoApplicationTests {
             System.out.println();
         }
     }
-    // --------------------------------Test Driver--------------------------------------------------------
+ 
+  // --------------------------------Test Driver--------------------------------------------------------
+  // --------------------------------Test Salary--------------------------------------------------------
+  @Test
+    public void testSalaryTrue() {
+        Salary s = new Salary();
+        s.setNameAdmin("pop");
+		s.setNameDriver("Hassad");
+		s.setNamePosition("thirawuth");
+        s.setPhoneDriver("0814445678");
+        s.setPayment("pass");
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Salary is True %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            //fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+			
+		}
+	}
+	
+
+	@Test
+    public void testSalaryCannotSize() {
+        Salary s = new Salary();
+        s.setNameAdmin("Ve");
+		s.setNameDriver("asdasdaasdsaddfhfghgdfghfhsfghgfgfhgfasdasdasdasdasdasdasdasdasdasd");
+		s.setNamePosition("asdasdasdasdasdasdasdasdjhgjhgjdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd");
+        s.setPhoneDriver("0812344456780");
+        s.setPayment("0912345644780");
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 4);
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			
+		}
+	}
+
+	@Test
+    public void testSalaryCannotPattern() {
+        Salary s = new Salary();
+        s.setNameAdmin("/*-789-/");
+		s.setNameDriver("/*-89");
+		s.setNamePosition("/*896");
+        s.setPhoneDriver("0512345678");
+        s.setPayment("/*-789-/");
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 5);
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+            
+            
+		}
+	}
+
+	@Test
+    public void testSalaryCannotNull() {
+        Salary s = new Salary();
+        s.setNameAdmin(null);
+		s.setNameDriver(null);
+		s.setNamePosition(null);
+        s.setPhoneDriver(null);
+        s.setPayment(null);
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+			
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 5);
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			System.out.println();
+			
+		}
+	}
+	
+        //+++++++++++++++++++++++++++++++++++Salary+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+         // --------------------------------Test Discount--------------------------------------------------------
+  @Test
+  public void testDiscountTrue() {
+    Discount s = new Discount();
+      s.setPromotion("pop");
+      
+
+      try {
+          entityManager.persist(s);
+          entityManager.flush();
+          System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Discount is True %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+          //fail("Should not pass to this line");
+      } catch(javax.validation.ConstraintViolationException e) {
+          Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+          assertEquals(violations.isEmpty(), false);
+          assertEquals(violations.size(), 1);
+          
+      }
+  }
+  
+
+  @Test
+  public void testDiscountCannotSize() {
+    Discount s = new Discount();
+      s.setPromotion("Ve");
+      
+
+      try {
+          entityManager.persist(s);
+          entityManager.flush();
+          
+          fail("Should not pass to this line");
+      } catch(javax.validation.ConstraintViolationException e) {
+          Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+          assertEquals(violations.isEmpty(), false);
+          assertEquals(violations.size(), 1);
+          System.out.println();
+          System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+          System.out.println();
+          System.out.println(e.getMessage());
+          System.out.println();
+          System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+          System.out.println();
+          
+      }
+  }
+
+  @Test
+  public void testDiscountCannotPattern() {
+    Discount s = new Discount();
+      s.setPromotion("/*-789-/");
+      
+
+      try {
+          entityManager.persist(s);
+          entityManager.flush();
+          
+          fail("Should not pass to this line");
+      } catch(javax.validation.ConstraintViolationException e) {
+          Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+          assertEquals(violations.isEmpty(), false);
+          assertEquals(violations.size(), 1);
+          System.out.println();
+          System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+          System.out.println();
+          System.out.println(e.getMessage());
+          System.out.println();
+          System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+          System.out.println();
+          
+          
+      }
+  }
+
+  @Test
+  public void testDiscountCannotNull() {
+    Discount s = new Discount();
+      s.setPromotion(null);
+     
+
+      try {
+          entityManager.persist(s);
+          entityManager.flush();
+          
+          fail("Should not pass to this line");
+      } catch(javax.validation.ConstraintViolationException e) {
+          Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+          assertEquals(violations.isEmpty(), false);
+          assertEquals(violations.size(), 1);
+          System.out.println();
+          System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+          System.out.println();
+          System.out.println(e.getMessage());
+          System.out.println();
+          System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+          System.out.println();
+          
+      }
+  }
+  
+      //+++++++++++++++++++++++++++++++++++Discount+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 }
 

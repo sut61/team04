@@ -2,6 +2,9 @@ package lab3.demo.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Date;
 @Data
 @Entity
@@ -23,9 +26,13 @@ public class Discount {
     @ManyToOne
     private CarType carType;
 
+    @Size(min = 3,max = 20) @NotNull
+    @Pattern(regexp ="\\w+")
     private  String promotion;
+
     @Temporal(TemporalType.DATE)
     private  Date date;
+
     private  Integer price;
     
 

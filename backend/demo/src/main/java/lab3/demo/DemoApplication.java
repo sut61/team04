@@ -26,6 +26,7 @@ public class DemoApplication {
 							AdminRepository adminRepository,
 							GiftRepository giftRepository,
 							CauseRepository causeRepository,
+							PositionRepository positionRepository,
 							PriceTypeRepository priceTypeRepository,
 							ScoreRepository scoreRepository) {
 		return args -> {
@@ -148,6 +149,15 @@ public class DemoApplication {
 			giftRepository.save(gift);
 		});
 		giftRepository.findAll().forEach(System.out::println);
+
+		
+		Stream.of("driver", "Service").forEach(name -> {
+			Position position = new Position();
+			position.setName(name);
+			positionRepository.save(position);
+		});
+		positionRepository.findAll().forEach(System.out::println);
+		
 	
 	
 	

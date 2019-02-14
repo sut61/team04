@@ -49,7 +49,8 @@ export class CashpayComponent implements OnInit {
             console.log(this.Member.name);
 
             var i = this.Member1.length;
-          }else if((i == this.Member1.length) && this.tel != this.Member1[i].phone){
+           }else //if(i == this.Member1.length && this.tel != this.Member1[i].phone)
+          {
             this.isShow4 = true;
           }
         /* else if(this.isShow3 == true ){

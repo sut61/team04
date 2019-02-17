@@ -1,0 +1,74 @@
+<mat-card >
+  <mat-toolbar >จ่ายเงินเงินเดือน</mat-toolbar>
+
+
+  <div align="center">
+
+
+    <mat-form-field>
+      <mat-select  placeholder="ชื่อAdmin"  >
+        <mat-option (click)="saveadmin(user)" *ngFor="let user of Admin" [(value)]="user.name">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div align="center">
+    <mat-form-field>
+      <mat-select  placeholder="เลื่อกชื่อพนักงาน"  >
+        <mat-option (click)="savedriver(user)" *ngFor="let user of Driver" [(value)]="user.name">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div align="center">
+    <mat-form-field>
+      <mat-select  placeholder="เลื่อกตำแหน่ง"  >
+        <mat-option (click)="saveposition(user)" *ngFor="let user of Position" [(value)]="user.name">
+          {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+   
+  <div align="center">
+    <mat-form-field>
+      <mat-select  placeholder="เลื่อกเบอร์โทร"  >
+        <mat-option (click)="savedriver(user)" *ngFor="let user of Driver" [(value)]="user.tel">
+          {{user.tel}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+   <div align="center">
+    <mat-form-field >
+      <input matInput [matDatepicker]="picker" placeholder="วันที่" [(ngModel)]="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+    <div align="center">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="จำนวนเงิน" [(ngModel)]='price' [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  </div>
+
+   
+  <div align="center">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="สถานะ" [(ngModel)]='payment' [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    
+
+  <div align="center" style="min-height: 300px">
+    <button (click)="save()">บันทึก</button>
+    <button onclick="window.location='menudriver'">ยกเลิก</button>
+  </div>
+
+</mat-card>

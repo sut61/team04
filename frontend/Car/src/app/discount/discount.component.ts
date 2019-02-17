@@ -62,6 +62,7 @@ save(){
   .subscribe(
     data => {
       alert("บันทึกสำเร็จ")
+      this.router.navigate(['discountshow'])
       
      }
    );

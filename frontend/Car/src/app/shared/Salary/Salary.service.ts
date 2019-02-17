@@ -5,21 +5,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DiscountService {
+export class SalaryService {
 
   public API = '//localhost:8080';
   constructor(private http: HttpClient) {  }
 
-  getDiscount(): Observable<any> {
-    return this.http.get(this.API + '/discount/');
-  }
-  getTimeRange(): Observable<any> {
-    return this.http.get(this.API + '/timeRange/');
-  }
   getAdmin(): Observable<any> {
     return this.http.get(this.API + '/admin/');
   }
-  getCarType(): Observable<any> {
-    return this.http.get(this.API + '/CarType/');
+  getDriver(): Observable<any> {
+    return this.http.get(this.API + '/driver/');
+  }
+  
+  getPosition(): Observable<any> {
+    return this.http.get(this.API + '/position/');
+  }
+  getSalary(): Observable<any> {
+    return this.http.get(this.API + '/salary/');
   }
 }

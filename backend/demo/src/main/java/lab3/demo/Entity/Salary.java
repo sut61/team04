@@ -29,11 +29,11 @@ public class Salary {
  
      
     @Size(min = 3,max = 20) @NotNull 
-    @Pattern(regexp ="\\w+")
+    @Pattern(regexp ="[\\w\\s]+")
     private String nameAdmin;
 
     @Size(min = 5,max = 20) @NotNull 
-    @Pattern(regexp ="\\w+")
+    @Pattern(regexp ="[\\w\\s]+")
     private String nameDriver;
 
     @Size(min = 3,max = 20) @NotNull 

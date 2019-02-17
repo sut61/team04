@@ -10,7 +10,9 @@ export class DiscountService {
   public API = '//localhost:8080';
   constructor(private http: HttpClient) {  }
 
-
+  getDiscount(): Observable<any> {
+    return this.http.get(this.API + '/discount/');
+  }
   getTimeRange(): Observable<any> {
     return this.http.get(this.API + '/timeRange/');
   }

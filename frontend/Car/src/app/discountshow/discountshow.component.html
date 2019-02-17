@@ -1,0 +1,33 @@
+<mat-toolbar>รายละเอียดการจายเงินเดือน</mat-toolbar>
+
+<mat-accordion  *ngFor="let user of discount" >
+  
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false"
+
+                      >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        วันที่ : {{user.date}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <!-- <p >ชื่อคนจ่าย : {{user.admin.name}}</p> -->
+   
+    <!-- <p >ชื่อคนขับรถ : {{user.driver.name}}</p> -->
+    <p >ประเภทรถ : {{user.carType.name}}</p>
+    <p>โปรโมชั่น : {{user.promotion}}</p>
+    <p >วันที่ : {{user.date}}</p>
+    <p>ช่วงเวลา : {{user.timeRange.timeRange}}</p>
+    <p >จำนวนเงินเงินที่ลด : {{user.price}}</p>
+    <!-- <p>สถานะ : {{user.payment}}</p> -->
+
+      <h5 style="text-align:center;">
+      
+    </h5>
+  </mat-expansion-panel>
+  <br>
+</mat-accordion>
+<button mat-raised-button onclick="window.location='menu'">กลับ</button>

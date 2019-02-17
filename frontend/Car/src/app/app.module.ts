@@ -32,6 +32,9 @@ import { DriverpctComponent } from './driverpct/driverpct.component';
 import { LoginDriverComponent } from './login-driver/login-driver.component';
 import { MenudriverComponent } from './menudriver/menudriver.component';
 import { TrancashComponent } from './trancash/trancash.component';
+import { DiscountshowComponent } from './discountshow/discountshow.component';
+import { SalaryComponent } from './salary/salary.component';
+import { SalaryshowComponent } from './salaryshow/salaryshow.component';
 
 const appRoutes: Routes = [
   { path: 'driverpct' ,component: DriverpctComponent },
@@ -45,6 +48,7 @@ const appRoutes: Routes = [
   { path: 'complain', component: ComplainComponent },
   { path: 'driver', component: DriverComponent },
   { path: 'discount', component: DiscountComponent },
+  { path: 'discountshow', component: DiscountshowComponent },
   { path: 'login-member', component: LoginMemberComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'reserve', component: ReservecarComponent },
@@ -57,6 +61,8 @@ const appRoutes: Routes = [
   { path: 'login-driver', component: LoginDriverComponent },
   { path: 'menudriver', component: MenudriverComponent },
   { path: 'trancash', component: TrancashComponent },
+  { path: 'salary', component: SalaryComponent },
+  { path: 'salaryshow', component: SalaryshowComponent },
 ];
 
 @NgModule({
@@ -77,13 +83,15 @@ const appRoutes: Routes = [
     CashpayComponent,
     TrancashComponent,
     DiscountComponent,
+    DiscountshowComponent,
     ComplainDescriptionComponent,
     ReservecarComponent,
     ReservesumComponent,
     CommentDescriptionComponent,
     SavefinishComponent,
     DriverpctComponent,
-    
+    SalaryComponent,
+    SalaryshowComponent,
     LoginDriverComponent,
     MenudriverComponent
   ],

@@ -52,6 +52,12 @@ public class DemoApplicationTests {
     @Autowired
     private DiscountRepository discountRepository;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
+    @Autowired
+    private DriverPCTRepository driverpctRepository;
+
 	private Validator validator;
 
 	@Before
@@ -1500,6 +1506,230 @@ public class DemoApplicationTests {
   }
   
       //+++++++++++++++++++++++++++++++++++Discount+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// --------------------------------Test Member--------------------------------------------------------
+@Test
+public void testTrueMember() {
+    Member d = new Member();
+    d.setName("Channarong");
+    d.setAddress("3440000000000000");
+    d.setPhone("0938939801");
+
+
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        //fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 1);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testTrueMember++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testTrueMember++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+@Test
+public void testPatternMember() {
+    Member d = new Member();
+    d.setName("*/*78534*/");
+    d.setAddress("3440000000000000");
+    d.setPhone("0949366256");
+
+
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 1);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testPatternMember++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testPatternMember++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+@Test
+public void testSizeMember() {
+    Member d = new Member();
+    d.setName("Channarong");
+    d.setAddress("3440000000000000");
+    d.setPhone("093893980112");
+
+
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 1);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testSizeMember++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testSizeMember++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+@Test
+public void testNullMember() {
+    Member d = new Member();
+    d.setName(null);
+    d.setAddress(null);
+    d.setPhone(null);
+
+
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 3);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testNullMember++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testNullMember++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+// --------------------------------Test Member--------------------------------------------------------
+
+// --------------------------------Test DriverPCT--------------------------------------------------------
+@Test
+public void testTrueDriverPCT() {
+    DriverPCT d = new DriverPCT();
+    d.setName("Channarong");
+    d.setAddress("3440000000000000");
+    d.setVehicleType("car");
+    d.setPhone("0938939801");
+    
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        //fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 1);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testTrueDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testTrueDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+@Test
+public void testPatternDriverPCT() {
+    DriverPCT d = new DriverPCT();
+    d.setName("*/*78534*/");
+    d.setAddress("3440000000000000");
+    d.setVehicleType("car");
+    d.setPhone("0538939801");
+
+
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 2);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testPatternDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testPatternDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+@Test
+public void testSizeDriverPCT() {
+    DriverPCT d = new DriverPCT();
+    d.setName("Channarong");
+    d.setAddress("3440000000000000");
+    d.setVehicleType("carrrrrrrrrrrrtrhtrhtyhtrhtgrhtyrtr");
+    d.setPhone("09333338939801");
+
+
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 2);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testSizeDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testSizeDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+@Test
+public void testNullDriverPCT() {
+    DriverPCT d = new DriverPCT();
+    d.setName(null);
+    d.setAddress(null);
+    d.setVehicleType(null);
+    d.setPhone(null);
+
+
+    try {
+        entityManager.persist(d);
+        entityManager.flush();
+
+        fail("Should not pass to this line");
+    } catch(javax.validation.ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+        assertEquals(violations.isEmpty(), false);
+        assertEquals(violations.size(), 4);
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testNullDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+        System.out.println(e.getMessage());
+        System.out.println();
+        System.out.println("++++++++++++++++++++++++++++++testNullDriverPCT++++++++++++++++++++++++++++++");
+        System.out.println();
+    }
+}
+
+// --------------------------------Test DriverPCT--------------------------------------------------------
 
 }
 

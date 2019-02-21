@@ -59,6 +59,9 @@ public class DemoApplicationTests {
     private DriverPCTRepository driverpctRepository;
 
 	private Validator validator;
+	private Member member;
+	private Driver driver;
+	private DriverTaxi driverTaxi;
 
 	@Before
 	public void setup() {
@@ -196,8 +199,8 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashDrivernamePattern++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
-            
+            }
+
             public void testCashDistanceNotOverSize() {
                 CashPay c = new CashPay();
                 c.setDrivername("paponpapon");
@@ -222,8 +225,8 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashDistanceNotLessthanMin++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
-            
+            }
+
             @Test
 			public void testCashDistanceNotLessthanMin() {
                 CashPay c = new CashPay();
@@ -249,7 +252,7 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashDistanceNotLessthanMin++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
+            }
             @Test
             public void testCashDistanceNotOverMax() {
                 CashPay c = new CashPay();
@@ -275,7 +278,7 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashDistanceNotOverMax++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
+            }
 
             @Test
 			public void testCashMoneyNotOverMax() {
@@ -302,7 +305,7 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashMoneyNotOverMax++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
+            }
 
             @Test
 			public void testCashMoneyNotLessthanMin() {
@@ -329,7 +332,7 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashMoneyNotLessthanMin++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
+            }
 
             @Test
 			public void testCashDistanceNotNecative() {
@@ -356,7 +359,7 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashDistanceNotNecative++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
+            }
 
             @Test
 			public void testCashMoneyNotNecative() {
@@ -383,14 +386,14 @@ public class DemoApplicationTests {
 					System.out.println("++++++++++++++++++++++++++++++testCashMoneyNotNecative++++++++++++++++++++++++++++++");
 					System.out.println();
 				}
-            } 
+            }
     // --------------------------------Test CashPay--------------------------------------------------------
     // --------------------------------Test OnlinePay--------------------------------------------------------
 
     @Test
     public void testOnlineMoneyNotOverMax() {
         OnlinePay c = new OnlinePay();
-        
+
         c.setDistance(82);
         c.setMoneypay(6000);
 
@@ -411,12 +414,12 @@ public class DemoApplicationTests {
             System.out.println("++++++++++++++++++++++++++++++testOnlineMoneyNotOverMax++++++++++++++++++++++++++++++");
             System.out.println();
         }
-    } 
+    }
 
     @Test
     public void testOnlineMoneyNotLessthanMin() {
         OnlinePay c = new OnlinePay();
-        
+
         c.setDistance(82);
         c.setMoneypay(1);
 
@@ -437,12 +440,12 @@ public class DemoApplicationTests {
             System.out.println("++++++++++++++++++++++++++++++testOnlineMoneyNotLessthanMin++++++++++++++++++++++++++++++");
             System.out.println();
         }
-    } 
+    }
 
     @Test
     public void testOnlineDistanceNotLessthanMin() {
         OnlinePay c = new OnlinePay();
-        
+
         c.setDistance(0);
         c.setMoneypay(150);
 
@@ -463,12 +466,12 @@ public class DemoApplicationTests {
             System.out.println("++++++++++++++++++++++++++++++testOnlineMoneyNotLessthanMin++++++++++++++++++++++++++++++");
             System.out.println();
         }
-    } 
+    }
 
     @Test
     public void testOnlineDistanceNotOverMaX() {
         OnlinePay c = new OnlinePay();
-        
+
         c.setDistance(1200);
         c.setMoneypay(150);
 
@@ -489,12 +492,12 @@ public class DemoApplicationTests {
             System.out.println("++++++++++++++++++++++++++++++testOnlineDistanceNotOverMaX++++++++++++++++++++++++++++++");
             System.out.println();
         }
-    } 
+    }
 
     @Test
     public void testOnlineMoneyNotNecative() {
         OnlinePay c = new OnlinePay();
-        
+
         c.setDistance(82);
         c.setMoneypay(-600);
 
@@ -515,12 +518,12 @@ public class DemoApplicationTests {
             System.out.println("++++++++++++++++++++++++++++++testOnlineMoneyNotNecative++++++++++++++++++++++++++++++");
             System.out.println();
         }
-    } 
+    }
 
     @Test
     public void testOnlineDistanceNotNecative() {
         OnlinePay c = new OnlinePay();
-        
+
         c.setDistance(-82);
         c.setMoneypay(600);
 
@@ -541,7 +544,7 @@ public class DemoApplicationTests {
             System.out.println("++++++++++++++++++++++++++++++testOnlineDistanceNotNecative++++++++++++++++++++++++++++++");
             System.out.println();
         }
-    } 
+    }
     // --------------------------------Test OnlinePay--------------------------------------------------------
     // --------------------------------Test Emergency--------------------------------------------------------
 
@@ -682,7 +685,7 @@ public class DemoApplicationTests {
 		s.setCur("abcdefghijkl");
 		s.setDate("31-12-19");
         s.setTime("23:59");
-        
+
 
         try {
             entityManager.persist(s);
@@ -702,7 +705,7 @@ public class DemoApplicationTests {
 		s.setCur(null);
 		s.setDate(null);
         s.setTime(null);
-        
+
 
         try {
             entityManager.persist(s);
@@ -730,7 +733,7 @@ public class DemoApplicationTests {
 		s.setCur("abc");
 		s.setDate("31-12-19");
         s.setTime("23:59");
-        
+
 
         try {
             entityManager.persist(s);
@@ -758,7 +761,7 @@ public class DemoApplicationTests {
 		s.setCur("abcdefghijklmnop");
 		s.setDate("31-12-19");
         s.setTime("23:59");
-        
+
 
         try {
             entityManager.persist(s);
@@ -786,7 +789,7 @@ public class DemoApplicationTests {
 		s.setCur("abcdefghijk");
 		s.setDate("31/12/19");
         s.setTime("23.59");
-        
+
 
         try {
             entityManager.persist(s);
@@ -929,7 +932,9 @@ public class DemoApplicationTests {
 		public void testComplainTrue() {
 			Complain s = new Complain();
 			s.setMessage("Very Good");
-			
+			s.setMember(member);
+			s.setDriver(driver);
+			s.setDriverTaxi(driverTaxi);
 			try {
 				entityManager.persist(s);
 				entityManager.flush();
@@ -947,6 +952,9 @@ public class DemoApplicationTests {
 		public void testComplainCannotSize() {
 			Complain s = new Complain();
 			s.setMessage("Very");
+			s.setMember(member);
+			s.setDriver(driver);
+			s.setDriverTaxi(driverTaxi);
 			
 			try {
 				entityManager.persist(s);
@@ -956,7 +964,7 @@ public class DemoApplicationTests {
 			} catch(javax.validation.ConstraintViolationException e) {
 				Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 				assertEquals(violations.isEmpty(), false);
-				assertEquals(violations.size(), 1);
+				assertEquals(violations.size(), 2);
 				System.out.println();
 			System.out.println("************************************************* testComplainCannotSize *************************************************");
 			System.out.println();
@@ -967,11 +975,50 @@ public class DemoApplicationTests {
 				
 			}
 		}
+
+
+	@Test
+	public void testComplainCannotUnique() {
+		Complain s = new Complain();
+		s.setId(12345678910L);
+		s.setMessage("VeryGood");
+		s.setMember(member);
+
+		Complain s1 = new Complain();
+		s1.setId(12345678910L);
+		s1.setMessage("VeryGood");
+		s1.setMember(member);
+
+
+		try {
+			entityManager.persist(s1);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 2);
+			System.out.println();
+			System.out.println("************************************************* testComplainCannotSize *************************************************");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("************************************************* testComplainCannotSize *************************************************");
+			System.out.println();
+
+		}catch (javax.persistence.PersistenceException e) {
+			e.printStackTrace();
+		}
+	}
 
 		@Test
 		public void testComplainCannotPattern() {
 			Complain s = new Complain();
 			s.setMessage("/*/-+++-*");
+			s.setMember(member);
+			s.setDriver(driver);
+			s.setDriverTaxi(driverTaxi);
 			
 			try {
 				entityManager.persist(s);
@@ -981,7 +1028,7 @@ public class DemoApplicationTests {
 			} catch(javax.validation.ConstraintViolationException e) {
 				Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 				assertEquals(violations.isEmpty(), false);
-				assertEquals(violations.size(), 1);
+				assertEquals(violations.size(), 2);
 				System.out.println();
 			System.out.println("************************************************* testComplainCannotPattern *************************************************");
 			System.out.println();
@@ -993,10 +1040,15 @@ public class DemoApplicationTests {
 			}
 		}
 
+
+
 		@Test
 		public void testComplainCannotNull() {
 			Complain s = new Complain();
 			s.setMessage(null);
+			s.setMember(null);
+			s.setDriver(driver);
+			s.setDriverTaxi(driverTaxi);
 			
 			try {
 				entityManager.persist(s);
@@ -1006,7 +1058,7 @@ public class DemoApplicationTests {
 			} catch(javax.validation.ConstraintViolationException e) {
 				Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 				assertEquals(violations.isEmpty(), false);
-				assertEquals(violations.size(), 1);
+				assertEquals(violations.size(), 2);
 				System.out.println();
 			System.out.println("************************************************* testComplainCannotNull *************************************************");
 			System.out.println();
@@ -1029,7 +1081,7 @@ public class DemoApplicationTests {
         Callcar s = new Callcar();
         s.setDest("abcdefghijk");
 		s.setCur("abcdefghijkl");
-        
+
 
         try {
             entityManager.persist(s);
@@ -1047,7 +1099,7 @@ public class DemoApplicationTests {
         Callcar s = new Callcar();
         s.setDest(null);
 		s.setCur(null);
-        
+
 
         try {
             entityManager.persist(s);
@@ -1073,7 +1125,7 @@ public class DemoApplicationTests {
         Callcar s = new Callcar();
         s.setDest("abc");
 		s.setCur("abc");
-        
+
 
         try {
             entityManager.persist(s);
@@ -1099,7 +1151,7 @@ public class DemoApplicationTests {
         Callcar s = new Callcar();
         s.setDest("abcdefghijklmnop");
 		s.setCur("abcdefghijklmnop");
-        
+
 
         try {
             entityManager.persist(s);
@@ -1290,7 +1342,7 @@ public class DemoApplicationTests {
             System.out.println();
         }
     }
- 
+
   // --------------------------------Test Driver--------------------------------------------------------
   // --------------------------------Test Salary--------------------------------------------------------
   @Test
@@ -1311,10 +1363,10 @@ public class DemoApplicationTests {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
-			
+
 		}
 	}
-	
+
 
 	@Test
     public void testSalaryCannotSize() {
@@ -1328,7 +1380,7 @@ public class DemoApplicationTests {
         try {
             entityManager.persist(s);
             entityManager.flush();
-			
+
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -1341,7 +1393,7 @@ public class DemoApplicationTests {
 			System.out.println();
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			System.out.println();
-			
+
 		}
 	}
 
@@ -1357,7 +1409,7 @@ public class DemoApplicationTests {
         try {
             entityManager.persist(s);
             entityManager.flush();
-			
+
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -1370,8 +1422,8 @@ public class DemoApplicationTests {
 			System.out.println();
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			System.out.println();
-            
-            
+
+
 		}
 	}
 
@@ -1387,7 +1439,7 @@ public class DemoApplicationTests {
         try {
             entityManager.persist(s);
             entityManager.flush();
-			
+
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -1400,17 +1452,17 @@ public class DemoApplicationTests {
 			System.out.println();
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testSalaryNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			System.out.println();
-			
+
 		}
 	}
-	
+
         //+++++++++++++++++++++++++++++++++++Salary+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
          // --------------------------------Test Discount--------------------------------------------------------
   @Test
   public void testDiscountTrue() {
     Discount s = new Discount();
       s.setPromotion("pop");
-      
+
 
       try {
           entityManager.persist(s);
@@ -1421,21 +1473,21 @@ public class DemoApplicationTests {
           Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
           assertEquals(violations.isEmpty(), false);
           assertEquals(violations.size(), 1);
-          
+
       }
   }
-  
+
 
   @Test
   public void testDiscountCannotSize() {
     Discount s = new Discount();
       s.setPromotion("Ve");
-      
+
 
       try {
           entityManager.persist(s);
           entityManager.flush();
-          
+
           fail("Should not pass to this line");
       } catch(javax.validation.ConstraintViolationException e) {
           Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -1448,7 +1500,7 @@ public class DemoApplicationTests {
           System.out.println();
           System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotSize %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
           System.out.println();
-          
+
       }
   }
 
@@ -1456,12 +1508,12 @@ public class DemoApplicationTests {
   public void testDiscountCannotPattern() {
     Discount s = new Discount();
       s.setPromotion("/*-789-/");
-      
+
 
       try {
           entityManager.persist(s);
           entityManager.flush();
-          
+
           fail("Should not pass to this line");
       } catch(javax.validation.ConstraintViolationException e) {
           Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -1474,8 +1526,8 @@ public class DemoApplicationTests {
           System.out.println();
           System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotPattern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
           System.out.println();
-          
-          
+
+
       }
   }
 
@@ -1483,12 +1535,12 @@ public class DemoApplicationTests {
   public void testDiscountCannotNull() {
     Discount s = new Discount();
       s.setPromotion(null);
-     
+
 
       try {
           entityManager.persist(s);
           entityManager.flush();
-          
+
           fail("Should not pass to this line");
       } catch(javax.validation.ConstraintViolationException e) {
           Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -1501,10 +1553,10 @@ public class DemoApplicationTests {
           System.out.println();
           System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% testDiscountNotNull %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
           System.out.println();
-          
+
       }
   }
-  
+
       //+++++++++++++++++++++++++++++++++++Discount+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // --------------------------------Test Member--------------------------------------------------------
 @Test
@@ -1625,7 +1677,7 @@ public void testTrueDriverPCT() {
     d.setAddress("3440000000000000");
     d.setVehicleType("car");
     d.setPhone("0938939801");
-    
+
     try {
         entityManager.persist(d);
         entityManager.flush();

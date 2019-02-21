@@ -70,6 +70,10 @@ export class DriverpctComponent implements OnInit {
       .subscribe(
         data => {
           alert("บันทึกสำเร็จ")
+         },
+         error => {
+           console.log('Error', error);
+           alert('กรอกข้อมูลผิดพลาด');
          }
        );
     }

@@ -1247,6 +1247,8 @@ public class DemoApplicationTests {
         d.setTel("0949366256");
         d.setAddress("3440000000000000");
         d.setEmail("Anuttapon@dsdsds.com");
+        d.setUsername("sssss");
+        d.setPassword("sssss");
 
 
         try {
@@ -1275,6 +1277,8 @@ public class DemoApplicationTests {
         d.setTel("0949366256");
         d.setAddress("3440000000000000");
         d.setEmail("Anuttapon@dsdsds.com");
+		d.setUsername("sssss");
+		d.setPassword("sssss");
 
 
         try {
@@ -1303,6 +1307,8 @@ public class DemoApplicationTests {
         d.setTel("094936625666");
         d.setAddress("3440000000000000");
         d.setEmail("Anuttapon@dsdsds.com");
+		d.setUsername("sssss");
+		d.setPassword("sssss");
 
 
         try {
@@ -1331,6 +1337,8 @@ public class DemoApplicationTests {
         d.setTel("0949366256");
         d.setAddress("a");
         d.setEmail("Anuttapon@dsdsds.com");
+		d.setUsername("sssss");
+		d.setPassword("sssss");
 
 
         try {
@@ -1360,6 +1368,8 @@ public class DemoApplicationTests {
         d.setTel("0949366256");
         d.setAddress("3440000000000000");
         d.setEmail("Anuttapondsdsds");
+		d.setUsername("sssss");
+		d.setPassword("sssss");
 
 
         try {
@@ -1382,32 +1392,94 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void testNullName() {
-        Driver d = new Driver();
-        d.setName(null);
-        d.setTel("0949366256");
-        d.setAddress("3440000000000000");
-        d.setEmail("Anuttapon@dsdsds.com");
+	public void testNullName() {
+		Driver d = new Driver();
+		d.setName(null);
+		d.setTel("0949366256");
+		d.setAddress("3440000000000000");
+		d.setEmail("Anuttapon@dsdsds.com");
+		d.setUsername("sssss");
+		d.setPassword("sssss");
 
 
-        try {
-            entityManager.persist(d);
-            entityManager.flush();
+		try {
+			entityManager.persist(d);
+			entityManager.flush();
 
-            fail("Should not pass to this line");
-        } catch(javax.validation.ConstraintViolationException e) {
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
-            System.out.println();
-            System.out.println("++++++++++++++++++++++++++++++testNullName++++++++++++++++++++++++++++++");
-            System.out.println();
-            System.out.println(e.getMessage());
-            System.out.println();
-            System.out.println("++++++++++++++++++++++++++++++testNullName++++++++++++++++++++++++++++++");
-            System.out.println();
-        }
-    }
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testNullName++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testNullName++++++++++++++++++++++++++++++");
+			System.out.println();
+		}
+	}
+
+	@Test
+	public void testSizeUsername() {
+		Driver d = new Driver();
+		d.setName("Anuttapon");
+		d.setTel("0949366256");
+		d.setAddress("3440000000000000");
+		d.setEmail("Anuttapon@dsdsds.com");
+		d.setUsername("ssssssssssssssssssss");
+		d.setPassword("sssss");
+
+
+		try {
+			entityManager.persist(d);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testSizeUsername++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testSizeUsername++++++++++++++++++++++++++++++");
+			System.out.println();
+		}
+	}
+
+	@Test
+	public void testPatternPassword() {
+		Driver d = new Driver();
+		d.setName("Anuttapon");
+		d.setTel("0949366256");
+		d.setAddress("3440000000000000");
+		d.setEmail("Anuttapon@dsdsds.com");
+		d.setUsername("sssss");
+		d.setPassword("******");
+
+
+		try {
+			entityManager.persist(d);
+			entityManager.flush();
+
+			fail("Should not pass to this line");
+		} catch(javax.validation.ConstraintViolationException e) {
+			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+			assertEquals(violations.isEmpty(), false);
+			assertEquals(violations.size(), 1);
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testPatternPassword++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(e.getMessage());
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++testPatternPassword++++++++++++++++++++++++++++++");
+			System.out.println();
+		}
+	}
 
   // --------------------------------Test Driver--------------------------------------------------------
   // --------------------------------Test Salary--------------------------------------------------------

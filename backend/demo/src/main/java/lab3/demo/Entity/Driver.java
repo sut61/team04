@@ -39,8 +39,13 @@ public class Driver {
     @Pattern(regexp ="[\\w\\s]+@[\\w\\s]+[\\.]com")
     private @NotNull String email;
 
-    String username;
-    String password;
+    @Size(min=0 , max=15)
+    @Pattern(regexp ="[\\w\\d]+")
+    private @NotNull String username;
+
+    @Size(min=5 , max=15)
+    @Pattern(regexp ="[\\w\\d]+")
+    private @NotNull String password;
 
 
 }

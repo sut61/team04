@@ -16,7 +16,7 @@ export class DiscountComponent implements OnInit {
   admin_id: any
   cartype_id: any
   discount: any
-
+  message:boolean = false
 
   promotion: any
   date: any
@@ -57,6 +57,7 @@ saveadmin(admin_id){
 }
 
 save(){
+  if(this.admin_id!=null&&this.cartype_id!=null&&this.promotion!=null&&this.date!&&this.timeRange_id!=null&&this.price!){
   console.log("insave");
   this.httpClient.post('http://localhost:8080/Discount/'+this.admin_id+'/'+this.cartype_id+'/'+this.promotion+'/'+this.date+'/'+this.timeRange_id+'/'+this.price,this.discount)
   .subscribe(
@@ -66,6 +67,10 @@ save(){
       
      }
    );
+
+}else {
+  this.message=true
 }
 
+}
 }

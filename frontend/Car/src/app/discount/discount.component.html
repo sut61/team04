@@ -3,7 +3,11 @@
 
 
   <div align="center">
-
+    
+      <div *ngIf="message">
+          กรุณากรอกมูลให้ครบ
+          <br><br>
+        </div>
 
     <mat-form-field>
       <mat-select  placeholder="ชื่อพนักงาน"  >

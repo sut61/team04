@@ -4,7 +4,11 @@
 
   <div align="center">
 
-
+    <div *ngIf="message">
+      กรุณากรอกมูลให้ครบ
+      <br><br>
+    </div>
+    
     <mat-form-field>
       <mat-select  placeholder="ชื่อAdmin"  >
         <mat-option (click)="saveadmin(user)" *ngFor="let user of Admin" [(value)]="user.name">

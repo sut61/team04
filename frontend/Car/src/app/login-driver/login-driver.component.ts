@@ -33,7 +33,7 @@ export class LoginDriverComponent implements OnInit {
           this.httpClient.post('http://localhost:8080/LoginDriver/'+this.id_driver.id,this.login)          
           .subscribe(
           data => {
-          alert("เข้าสู่ระบบสำเร็จ")
+          // alert("เข้าสู่ระบบสำเร็จ")
           }
           );
           this.router.navigate(['/menudriver']);  

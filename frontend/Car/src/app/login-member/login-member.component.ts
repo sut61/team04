@@ -37,7 +37,7 @@ export class LoginMemberComponent implements OnInit {
           this.httpClient.post('http://localhost:8080/LoginMember1/'+this.id_member.id,this.login)          
           .subscribe(
           data => {
-          alert("เข้าสู่ระบบสำเร็จ")
+          
           }
           );
           this.router.navigate(['/menu']);  

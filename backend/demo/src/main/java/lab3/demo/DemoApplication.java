@@ -30,6 +30,8 @@ public class DemoApplication {
 							PriceTypeRepository priceTypeRepository,
 							ScoreRepository scoreRepository) {
 		return args -> {
+
+
 			Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
 					"AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
 				CarType car = new CarType();
@@ -48,13 +50,11 @@ public class DemoApplication {
 
 			
 				DriverTaxi driverTaxi = new DriverTaxi();
-				driverTaxi.setName("name1");
-				driverTaxi.setTel("0866666666");
-				driverTaxi.setAddress("Address1");
-				driverTaxi.setEmail("Email1");
+				driverTaxi.setName("name");
+				driverTaxi.setTel("0812345678");
+				driverTaxi.setAddress("Addressasdasdasdasd");
+				driverTaxi.setEmail("moss@moss.com");
 				driverTaxiRepository.save(driverTaxi);
-			
-
 			driverTaxiRepository.findAll().forEach(System.out::println);
 
 

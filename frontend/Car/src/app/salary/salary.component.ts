@@ -58,10 +58,10 @@ export class SalaryComponent implements OnInit {
   }
   
   save(){
-    if(this.admin_id!=null&&this.driver_id!=null&&this.position_id!=null&&this.date!&&this.payment!=null&&this.price!){
+    if(this.admin_id!=null&&this.driver_id!=null&&this.position_id!=null&&this.date!&&this.price!=null&&this.payment!){
 
     console.log("insave");
-    this.httpClient.post('http://localhost:8080/Salary/'+this.admin_id.name+'/'+this.driver_id.name+'/'+this.position_id.name+'/'+this.driver_id.tel+'/'+this.date+'/'+this.price+'/'+this.payment+'/'+this.admin_id.id+'/'+this.driver_id.id+'/'+this.position_id.id,this.salary)
+    this.httpClient.post('http://localhost:8080/Salary/'+this.admin_id+'/'+this.driver_id+'/'+this.position_id+'/'+this.date+'/'+this.price+'/'+this.payment,this.salary)
     .subscribe(
       data => {
         alert("บันทึกสำเร็จ")

@@ -39,13 +39,10 @@ public class SalaryController {
     }
 
     
-    @PostMapping("/Salary/{nameAdmin}/{nameDriver}/{namePosition}/{phoneDriver}/{date}/{price}/{payment}/{id_admin}/{id_driver}/{id_position}")
+    @PostMapping("/Salary/{date}/{price}/{payment}/{id_admin}/{id_driver}/{id_position}")
     public Salary Salary(
             
-            @PathVariable String nameAdmin,
-            @PathVariable String nameDriver,
-            @PathVariable String namePosition,
-            @PathVariable String phoneDriver,
+        
             @PathVariable Date date,
             @PathVariable int price,
             @PathVariable String payment,
@@ -61,10 +58,6 @@ public class SalaryController {
 
         Salary salary = new Salary();
         
-        salary.setNameAdmin(nameAdmin);
-        salary.setNameDriver(nameDriver);
-        salary.setNamePosition(namePosition);
-        salary.setPhoneDriver(phoneDriver);
         salary.setDate(date);
         salary.setPrice(price);
         salary.setPayment(payment);

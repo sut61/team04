@@ -17,6 +17,7 @@ public class Emergency {
 
     @Id
     @GeneratedValue
+    @Column(name="emergencyId",unique = true, nullable = false)
     private Long id;
 
     @ManyToOne

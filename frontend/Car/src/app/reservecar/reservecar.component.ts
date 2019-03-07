@@ -23,6 +23,7 @@ export class ReservecarComponent implements OnInit {
   YY: any
   HH: any
   Mi: any
+  Date: any
   hidenull:boolean = false
   hidedate:boolean = false
   hideplace:boolean = false
@@ -112,12 +113,12 @@ export class ReservecarComponent implements OnInit {
 
   save(){
 
-    if (this.Dest == null || this.Cur == null || this.DD == null || this.MM == null || this.YY == null || this.HH == null || this.Mi == null || this.cartype_id == null || this.driver_id == null){
+    if (this.Dest == null || this.Cur == null /* || this.DD == null || this.MM == null || this.YY == null */ || this.HH == null || this.Mi == null || this.cartype_id == null || this.driver_id == null){
       this.hidenull = true;
       setTimeout(function() {
         this.hidenull = false;
       }.bind(this), 5000);
-    }else if(this.DD < 1 || this.DD > 31 || this.MM < 1 || this.MM > 12 || this.YY < 19){
+    }else if(this.HH < 0 || this.HH > 23 || this.Mi < 0 || this.Mi > 59){
       this.hidedate = true;
       setTimeout(function() {
         this.hidedate = false;
@@ -139,6 +140,8 @@ export class ReservecarComponent implements OnInit {
       }.bind(this), 5000);
     }else{
 
+     // this.Date=this.DD+'-'+this.MM+'-'+this.YY;
+
       this.httpClient.post('http://localhost:8080/Unavailable/'+this.driver_id,this.reservecar)
     .subscribe(
       data => {
@@ -147,13 +150,13 @@ export class ReservecarComponent implements OnInit {
        }
      );
 
-      this.httpClient.post('http://localhost:8080/Reservecar/'+this.Dest+'/'+this.Cur+'/'+this.DD+'-'+this.MM+'-'+this.YY+'/'+this.HH+':'+this.Mi+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember.member.id,this.reservecar)
+      this.httpClient.post('http://localhost:8080/Reservecar/'+this.Dest+'/'+this.Cur+'/'+this.Date+'/Wed%20Mar%2013%202019%20'+this.HH+':'+this.Mi+':00%20GMT+0700%20(Indochina%20Time)'+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember.member.id,this.reservecar)
     .subscribe(
       data => {
         this.hidenull = false;
         console.log("saved");
         this.router.navigate(['/reservesum']);
-        console.log(this.Dest+'/'+this.Cur+'/'+this.DD+'-'+this.MM+'-'+this.YY+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember);
+        console.log(this.Dest+'/'+this.Cur+'/'+this.Date+'/'+this.cartype_id+'/'+this.driver_id+'/'+this.LoginMember);
        }
      );
     }

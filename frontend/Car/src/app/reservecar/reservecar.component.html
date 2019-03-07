@@ -25,20 +25,22 @@
       </form>
     </div>
 
-    <!-- <div align="center">
-      <mat-form-field>
-        <input matInput #datep [matDatepicker]="picker" placeholder="When?" [(ngModel)]='Datepick' [ngModelOptions]="{standalone: true}">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker touchUi disabled="false"></mat-datepicker>
-        <mat-hint align="end">{{datep.value}}</mat-hint>
-      </mat-form-field>
-    </div> -->
+    
 
     <div align="center" class="width">
       When?
     </div>
 
-    <div align="center" class="width">
+    <div align="center">
+      <mat-form-field>
+        <input matInput #datep disabled="true" [matDatepicker]="picker" placeholder="When?" [(ngModel)]="Date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker touchUi disabled="false"></mat-datepicker>
+        <mat-hint align="end">{{datep.value}}</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <!-- <div align="center" class="width">
             <mat-form-field style="text-align: center">
               <input (keypress)="numberOnly($event)" type="text" matInput #input maxlength="2" placeholder="DD" [(ngModel)]='DD' [ngModelOptions]="{standalone: true}">
             </mat-form-field>
@@ -50,7 +52,7 @@
             <mat-form-field  style="text-align: center">
               <input (keypress)="numberOnly($event)" type="text" matInput #input maxlength="2" placeholder="YY" [(ngModel)]='YY' [ngModelOptions]="{standalone: true}">
             </mat-form-field>
-    </div>
+    </div> -->
 
     <div align="center" class="width">
       Time?

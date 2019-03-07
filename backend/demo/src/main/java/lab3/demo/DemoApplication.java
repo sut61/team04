@@ -81,7 +81,7 @@ public class DemoApplication {
 			});
 			provinceRepository.findAll().forEach(System.out::println);
 
-			Stream.of("กษิกรนะ", "ไทยพานิชนะ", "กรุงทองนะ").forEach(name -> {
+			Stream.of("Kasikorn", "Krungsri", "Thailand").forEach(name -> {
 				Bank bank = new Bank();
 				bank.setName(name);
 				bankrepository.save(bank);

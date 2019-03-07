@@ -2,6 +2,8 @@ package lab3.demo.Entity;
 
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -16,42 +18,31 @@ import java.util.Date;
 @Table(name="Salary")
 public class Salary {
 
-    @Id
-    @GeneratedValue
+    @Id 
+    @SequenceGenerator(name="salary_seq",sequenceName="salary_seq")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="salary_seq")
+    @Column(name="SalaryId",unique = true, nullable = false)
+    @NotNull
     private Long id;
-
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Admin.class)
     private Admin admin;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Driver.class)
     private Driver driver;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Position.class)
     private Position position ;
  
-     
-    @Size(min = 3,max = 20) @NotNull 
-    @Pattern(regexp ="[\\w\\s]+")
-    private String nameAdmin;
-
-    @Size(min = 5,max = 20) @NotNull 
-    @Pattern(regexp ="[\\w\\s]+")
-    private String nameDriver;
-
-    @Size(min = 3,max = 20) @NotNull 
-    @Pattern(regexp ="\\w+")
-    private String namePosition;
-
-    @Size(min = 10,max = 10) @NotNull 
-    @Pattern(regexp ="0[89]\\d+")
-    private String phoneDriver;
     
     @Size(min = 3,max = 20) @NotNull 
     @Pattern(regexp ="\\w+")
     private String payment;
       
     @Temporal(TemporalType.DATE)
-    private  Date date;
+    private @NotNull Date date;
     
-    private  int price;
+    @Min(1)
+    @Max(9999999)
+    private Integer price;
 
 
 }

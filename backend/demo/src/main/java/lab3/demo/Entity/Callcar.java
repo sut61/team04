@@ -1,14 +1,12 @@
 package lab3.demo.Entity;
 import lombok.*;
 
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Pattern;
 
+@Data
 @Entity
 @Getter
 @Setter
@@ -17,24 +15,33 @@ import javax.validation.constraints.Pattern;
 @EqualsAndHashCode
 
 public class Callcar {
-    @Id @GeneratedValue
+    @Id
+    @SequenceGenerator(name="callcar_seq",sequenceName="callcar_seq")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="callcar_seq")
+    @Column(name="callcarId",unique = true, nullable = false)
+    @NotNull
     private Long id;
 
     @NotNull
     @Size(min=10, max=15)
+    @Pattern(regexp ="[\\w\\s]+")
     String dest;
 
     @NotNull
     @Size(min=10, max=15)
+    @Pattern(regexp ="[\\w\\s]+")
     String cur;
 
-    @ManyToOne
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = CarType.class)
     private CarType carType;
 
-    @ManyToOne
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Driver.class)
     private Driver driver;
-
-    @ManyToOne
+    
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Member.class)
     private Member member;
 
 

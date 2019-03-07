@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.Date;
 
 @RestController
 @RepositoryRestResource
@@ -46,8 +47,8 @@ public class ReservecarController {
     public Reservecar Reservecar(
             @PathVariable String dest,
             @PathVariable String cur,
-            @PathVariable String date,
-            @PathVariable String time,
+            @PathVariable Date date,
+            @PathVariable Date time,
             @PathVariable Long id_cartype,
             @PathVariable Long id_driver,
             @PathVariable Long id_member){

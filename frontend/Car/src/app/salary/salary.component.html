@@ -11,7 +11,7 @@
     
     <mat-form-field>
       <mat-select  placeholder="ชื่อAdmin"  >
-        <mat-option (click)="saveadmin(user)" *ngFor="let user of Admin" [(value)]="user.name">
+        <mat-option (click)="saveadmin(user.id)" *ngFor="let user of Admin" [(value)]="user.name">
           {{user.name}}
         </mat-option>
       </mat-select>
@@ -20,7 +20,7 @@
   <div align="center">
     <mat-form-field>
       <mat-select  placeholder="เลื่อกชื่อพนักงาน"  >
-        <mat-option (click)="savedriver(user)" *ngFor="let user of Driver" [(value)]="user.name">
+        <mat-option (click)="savedriver(user.id)" *ngFor="let user of Driver" [(value)]="user.name">
           {{user.name}}
         </mat-option>
       </mat-select>
@@ -30,7 +30,7 @@
   <div align="center">
     <mat-form-field>
       <mat-select  placeholder="เลื่อกตำแหน่ง"  >
-        <mat-option (click)="saveposition(user)" *ngFor="let user of Position" [(value)]="user.name">
+        <mat-option (click)="saveposition(user.id)" *ngFor="let user of Position" [(value)]="user.name">
           {{user.name}}
         </mat-option>
       </mat-select>
@@ -40,7 +40,7 @@
   <div align="center">
     <mat-form-field>
       <mat-select  placeholder="เลื่อกเบอร์โทร"  >
-        <mat-option (click)="savedriver(user)" *ngFor="let user of Driver" [(value)]="user.tel">
+        <mat-option (click)="savedriver(user.id)" *ngFor="let user of Driver" [(value)]="user.tel">
           {{user.tel}}
         </mat-option>
       </mat-select>

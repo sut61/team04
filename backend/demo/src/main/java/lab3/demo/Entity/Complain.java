@@ -31,7 +31,7 @@ public class Complain {
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = DriverTaxi.class)
     private DriverTaxi driverTaxi;
 
-     @Size(min =5,max=20 ) 
+    @Size(min =5,max=20 )
     @Pattern(regexp ="[\\w\\s]+")
     private @NotNull String message;
     

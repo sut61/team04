@@ -5,6 +5,8 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Getter
@@ -17,7 +19,8 @@ public class PriceType {
   @Id @GeneratedValue
     private Long id;
 
-    String priceType;
+  @Size(min = 5 , max = 50)
+  @NotNull private String priceType;
  
 
 }

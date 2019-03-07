@@ -17,6 +17,7 @@ public class Driver {
 
     @Id
     @GeneratedValue
+    @Column(name="driverId",unique = true, nullable = false)
     private Long id;
 
     @ManyToOne
